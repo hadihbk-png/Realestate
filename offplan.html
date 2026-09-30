@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Off-Plan Developments | Hadi Real Estate UAE</title>
+  <meta name="description" content="Secure early-stage private allocations in Dubai and Abu Dhabi's most anticipated luxury architectural towers and communities. Flexible payment plans in AED.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Menu -->
+  <header class="top-nav solid-nav" id="topNav">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo brand-logo--charcoal" id="navBrandLogo" aria-label="Hadi Real Estate Home">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">REAL ESTATE</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/properties.html" class="nav-link">Properties</a></li>
+          <li><a href="/offplan.html" class="nav-link active">Off-Plan</a></li>
+          <li><a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a></li>
+          <li><a href="/sell.html" class="nav-link">Sell</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline-charcoal btn-nav-register trigger-register-modal">
+          Register Interest
+        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="fullscreen-mobile-menu" id="fullscreenMobileMenu">
+    <div class="brand-logo brand-logo--charcoal" style="margin-bottom: 2rem;">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/properties.html" class="mobile-nav-link">Properties</a></li>
+      <li><a href="/offplan.html" class="mobile-nav-link">Off-Plan Projects</a></li>
+      <li><a href="/mortgage-calculator.html" class="mobile-nav-link">Mortgage Calculator</a></li>
+      <li><a href="/sell.html" class="mobile-nav-link">Sell Your Property</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-gold trigger-register-modal mobile-btn" style="width: 240px;">Register Interest</button>
+    </div>
+  </div>
+
+  <!-- Page Header Banner -->
+  <section class="page-header-banner">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">FUTURE MASTERWORKS</span>
+      <h1 class="section-title">UAE Off-Plan Investment Portfolio</h1>
+      <p class="section-subtitle center">
+        Early-stage investor opportunities in landmark architectural towers and tranquil villa master developments. All prices in AED.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section style="background-color: var(--color-offwhite); padding: 2.2rem 0; border-bottom: 1px solid var(--color-lightgray);">
+    <div class="container">
+      <div style="background-color: var(--color-white); padding: 1.5rem 2rem; border: 1px solid var(--color-lightgray); box-shadow: var(--shadow-soft); display: flex; gap: 2rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+          <div class="search-field-group">
+            <label class="search-field-label">Community</label>
+            <select id="offplanCommunitySelect" class="search-field-select" style="min-width: 200px;">
+              <option value="all">All Prime Communities</option>
+              <option value="Downtown">Downtown Dubai</option>
+              <option value="Palm Jumeirah">Palm Jumeirah</option>
+              <option value="Dubai Hills">Dubai Hills Estate</option>
+              <option value="Dubai Marina">Dubai Marina</option>
+              <option value="Business Bay">Business Bay</option>
+              <option value="JVC">JVC</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Handover Timeline</label>
+            <select id="offplanHandoverSelect" class="search-field-select" style="min-width: 180px;">
+              <option value="all">All Timelines</option>
+              <option value="2026">Handover 2026</option>
+              <option value="2027">Handover 2027</option>
+              <option value="2028">Handover 2028</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <span id="offplanCount" style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--color-warmgray); font-weight: 500;">
+            Loading developments...
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Offplan Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="offplan-card-grid" id="offplanGrid">
+        <!-- Rendered by offplan.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo brand-logo--white">
+            <span class="logo-word">HADI</span>
+            <span class="logo-line"></span>
+            <span class="logo-subtext">REAL ESTATE</span>
+          </div>
+          <p class="footer-brand-desc">
+            Bespoke luxury brokerage and investment advisory for prime residential and off-plan assets in the United Arab Emirates.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">PORTFOLIO</div>
+          <ul class="footer-links-list">
+            <li><a href="/properties.html" class="footer-link">Ready Residences</a></li>
+            <li><a href="/offplan.html" class="footer-link">Off-Plan Projects</a></li>
+            <li><a href="/properties.html?community=Palm+Jumeirah" class="footer-link">Palm Jumeirah</a></li>
+            <li><a href="/properties.html?community=Downtown" class="footer-link">Downtown Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ADVISORY</div>
+          <ul class="footer-links-list">
+            <li><a href="/mortgage-calculator.html" class="footer-link">Mortgage Calculator</a></li>
+            <li><a href="/sell.html" class="footer-link">Sell Your Property</a></li>
+            <li><a href="/about.html" class="footer-link">About Hadi</a></li>
+            <li><a href="/contact.html" class="footer-link">Contact Office</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">PRIVATE OFFICE</div>
+          <p class="footer-contact-item">Level 48, Boulevard Plaza Tower<br>Downtown Dubai, UAE</p>
+          <p class="footer-contact-item">Inquiries: +971 4 800 HADI<br>WhatsApp: +971 50 123 4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p class="footer-legal-note">
+          © 2026 Hadi Real Estate. All rights reserved. Licensed real estate brokerage in the United Arab Emirates. Prices in AED.
+        </p>
+        <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold);">
+          DISCRETION • INTEGRITY • EXCELLENCE
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/offplan.js"></script>
+</body>
+</html>

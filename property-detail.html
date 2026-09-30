@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residence Details | Hadi Real Estate UAE</title>
+  <meta name="description" content="Detailed luxury property overview, architectural specifications, private viewing bookings, and bespoke inquiries.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Menu -->
+  <header class="top-nav solid-nav" id="topNav">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo brand-logo--charcoal" id="navBrandLogo" aria-label="Hadi Real Estate Home">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">REAL ESTATE</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/properties.html" class="nav-link active">Properties</a></li>
+          <li><a href="/offplan.html" class="nav-link">Off-Plan</a></li>
+          <li><a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a></li>
+          <li><a href="/sell.html" class="nav-link">Sell</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline-charcoal btn-nav-register trigger-register-modal">
+          Register Interest
+        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="fullscreen-mobile-menu" id="fullscreenMobileMenu">
+    <div class="brand-logo brand-logo--charcoal" style="margin-bottom: 2rem;">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/properties.html" class="mobile-nav-link">Properties</a></li>
+      <li><a href="/offplan.html" class="mobile-nav-link">Off-Plan Projects</a></li>
+      <li><a href="/mortgage-calculator.html" class="mobile-nav-link">Mortgage Calculator</a></li>
+      <li><a href="/sell.html" class="mobile-nav-link">Sell Your Property</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-gold trigger-register-modal mobile-btn" style="width: 240px;">Register Interest</button>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs Bar -->
+  <section style="background-color: var(--color-offwhite); padding: 7.5rem 0 1.2rem 0; border-bottom: 1px solid var(--color-lightgray);">
+    <div class="container">
+      <div style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-warmgray);">
+        <a href="/" style="color: var(--color-charcoal);">Home</a> / 
+        <a href="/properties.html" style="color: var(--color-charcoal);">Properties</a> / 
+        <span style="color: var(--color-gold);" id="breadcrumbTitle">Residence Details</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Property Detail View -->
+  <main class="section-padding" id="propertyDetailContainer">
+    <div class="container">
+      
+      <div class="detail-layout-grid">
+        
+        <!-- Left Content: Gallery & Specifications -->
+        <div>
+          <!-- Main Photo Frame -->
+          <div class="detail-gallery-main">
+            <img src="assets/images/palm-villa.jpg" alt="Luxury Residence" id="propMainImage">
+            <span class="property-card-badge" id="propBadge">Ready to Move</span>
+          </div>
+
+          <!-- Thumbnails -->
+          <div id="propThumbsContainer" style="display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;"></div>
+
+          <!-- Title & Meta -->
+          <span class="section-tag" id="propCommunity">COMMUNITY LOCATION</span>
+          <h1 class="section-title" id="propTitle" style="font-size: 2.8rem; margin-bottom: 0.5rem;">Residence Title</h1>
+          <div id="propPrice" style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-gold); font-weight: 400; margin-bottom: 2rem;">
+            AED 00,000,000
+          </div>
+
+          <!-- Key Specs Strip -->
+          <div class="detail-specs-grid">
+            <div class="detail-spec-box">
+              <strong>Bedrooms</strong>
+              <span id="propBeds">--</span>
+            </div>
+            <div class="detail-spec-box">
+              <strong>Bathrooms</strong>
+              <span id="propBaths">--</span>
+            </div>
+            <div class="detail-spec-box">
+              <strong>Built-up Area</strong>
+              <span id="propSqft">--</span>
+            </div>
+            <div class="detail-spec-box">
+              <strong>Property Type</strong>
+              <span id="propType">--</span>
+            </div>
+          </div>
+
+          <!-- Narrative Description -->
+          <div style="margin-bottom: 3rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem;">Architectural Overview</h3>
+            <p id="propDescription" style="color: var(--color-warmgray); font-size: 1rem; line-height: 1.85;">
+              Loading description...
+            </p>
+          </div>
+
+          <!-- Amenities List -->
+          <div style="margin-bottom: 3.5rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem;">Key Highlights & Amenities</h3>
+            <ul class="detail-amenities-list" id="propFeaturesList">
+              <!-- Rendered by JS -->
+            </ul>
+          </div>
+
+          <!-- FORM 1: BOOK A VIEWING -->
+          <div class="form-card-container" style="background-color: var(--color-offwhite); padding: 3rem; border: 1px solid var(--color-lightgray); margin-bottom: 3rem;">
+            <span class="section-tag">PRIVATE APPOINTMENT</span>
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem;">Book a Private Viewing</h3>
+            <p style="font-size: 0.88rem; color: var(--color-warmgray); margin-bottom: 2rem;">
+              Select a preferred viewing date. A licensed private office advisor will accompany you.
+            </p>
+
+            <form data-ajax-endpoint="/api/viewings" id="bookViewingForm">
+              <!-- Anti-Spam Honeypot -->
+              <input type="text" name="hp_website_fax" class="hp-fax-field" tabindex="-1" autocomplete="off">
+              <input type="hidden" name="property_id" value="">
+              <input type="hidden" name="property_title" value="">
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Your Name *</label>
+                  <input type="text" name="client_name" class="form-input" placeholder="e.g. Lord Alexander Vance" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Phone / WhatsApp Number *</label>
+                  <input type="tel" name="client_phone" class="form-input" placeholder="+971 50 000 0000" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Preferred Date *</label>
+                  <input type="date" name="viewing_date" id="viewingDateInput" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Preferred Time Window</label>
+                  <select name="viewing_time" class="form-select">
+                    <option value="Morning (10:00 AM - 12:00 PM)">Morning (10:00 AM - 12:00 PM)</option>
+                    <option value="Afternoon (02:00 PM - 04:00 PM)">Afternoon (02:00 PM - 04:00 PM)</option>
+                    <option value="Sunset / Evening (04:30 PM - 06:30 PM)" selected>Sunset / Evening (04:30 PM - 06:30 PM)</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-full-width">
+                  <label class="form-label">Special Requests (Optional)</label>
+                  <textarea name="special_requests" class="form-textarea" placeholder="Security gate clearance, buggy access, or technical questions..."></textarea>
+                </div>
+
+                <div class="form-full-width" style="text-align: center; margin-top: 1rem;">
+                  <button type="submit" class="btn btn-gold" style="min-width: 260px;">
+                    Confirm Viewing Booking
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="form-success-box">
+              <div class="success-reference">VIEWING CONFIRMATION: <span class="ref-number">VIEW-8819</span></div>
+              <h3 class="success-heading">Viewing Request Received</h3>
+              <p style="color: var(--color-warmgray); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                Thank you. Hadi Real Estate advisor will contact you within 24 hours.
+              </p>
+              <button class="btn btn-outline-charcoal" onclick="location.reload()">Book Another Appointment</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Enquiry Box & Broker Card -->
+        <div>
+          <div class="sidebar-sticky-box">
+            
+            <div style="border-bottom: 1px solid var(--color-lightgray); padding-bottom: 1.5rem; margin-bottom: 2rem;">
+              <span class="section-tag" style="margin-bottom: 0.4rem;">DISCREET INQUIRY</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.3rem;">Enquire on this Property</h3>
+              <p style="font-size: 0.85rem; color: var(--color-warmgray);">
+                Direct line to Hadi Real Estate senior brokerage.
+              </p>
+            </div>
+
+            <!-- FORM 2: ENQUIRE FORM -->
+            <div class="form-card-container">
+              <form data-ajax-endpoint="/api/leads" id="propEnquireForm">
+                <!-- Anti-spam Honeypot -->
+                <input type="text" name="hp_website_fax" class="hp-fax-field" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="property_id" value="">
+                <input type="hidden" name="property_title" value="">
+                <input type="hidden" name="source" value="Property Detail Enquiry">
+
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                  <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="full_name" class="form-input" placeholder="Your name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Phone / WhatsApp *</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="+971 50 000 0000" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Email (Optional)</label>
+                    <input type="email" name="email" class="form-input" placeholder="name@domain.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Your Budget Range (AED)</label>
+                    <select name="budget_aed" class="form-select">
+                      <option value="Full Asking Price Cash">Full Asking Price (Cash Funds)</option>
+                      <option value="Financed via UAE Bank">Financed via UAE Bank Mortgage</option>
+                      <option value="Seeking Structured Negotiation">Seeking Structured Negotiation</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Message / Questions</label>
+                    <textarea name="notes" class="form-textarea" placeholder="Is this property vacant on transfer? When can contracts be signed?" style="min-height: 90px;"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 0.5rem;">
+                    Submit Inquiry
+                  </button>
+                </div>
+              </form>
+
+              <div class="form-success-box">
+                <div class="success-reference">REFERENCE: <span class="ref-number">HRE-98112</span></div>
+                <h3 class="success-heading" style="font-size: 1.6rem;">Inquiry Logged</h3>
+                <p style="color: var(--color-warmgray); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                  Thank you. Hadi Real Estate advisor will contact you within 24 hours.
+                </p>
+                <button class="btn btn-outline-charcoal btn-sm" onclick="location.reload()">Send Another</button>
+              </div>
+            </div>
+
+            <!-- Assigned Listing Broker Card -->
+            <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--color-lightgray);">
+              <span class="section-tag" style="margin-bottom: 0.4rem;">ASSIGNED SENIOR BROKER</span>
+              <div style="display: flex; align-items: center; gap: 1rem; margin: 1rem 0;">
+                <img src="assets/images/agent1.jpg" alt="Rashid Al-Mansoor" style="width: 56px; height: 56px; object-fit: cover; border-radius: 50%; border: 2px solid var(--color-gold); flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <div>
+                  <h4 style="font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.1;">Rashid Al-Mansoor</h4>
+                  <span style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-warmgray);">
+                    Managing Partner • RERA-BRN-49210
+                  </span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem;">
+                <a href="https://wa.me/971501234567" target="_blank" class="btn btn-outline-charcoal btn-sm" style="flex: 1;">
+                  WhatsApp Broker
+                </a>
+                <a href="tel:+9714800HADI" class="btn btn-gold btn-sm" style="flex: 1;">
+                  Call Broker
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Dark Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo brand-logo--white">
+            <span class="logo-word">HADI</span>
+            <span class="logo-line"></span>
+            <span class="logo-subtext">REAL ESTATE</span>
+          </div>
+          <p class="footer-brand-desc">
+            Bespoke luxury brokerage and investment advisory for prime residential and off-plan assets in the United Arab Emirates.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">PORTFOLIO</div>
+          <ul class="footer-links-list">
+            <li><a href="/properties.html" class="footer-link">Ready Residences</a></li>
+            <li><a href="/offplan.html" class="footer-link">Off-Plan Projects</a></li>
+            <li><a href="/properties.html?community=Palm+Jumeirah" class="footer-link">Palm Jumeirah</a></li>
+            <li><a href="/properties.html?community=Downtown" class="footer-link">Downtown Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ADVISORY</div>
+          <ul class="footer-links-list">
+            <li><a href="/mortgage-calculator.html" class="footer-link">Mortgage Calculator</a></li>
+            <li><a href="/sell.html" class="footer-link">Sell Your Property</a></li>
+            <li><a href="/about.html" class="footer-link">About Hadi</a></li>
+            <li><a href="/contact.html" class="footer-link">Contact Office</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">PRIVATE OFFICE</div>
+          <p class="footer-contact-item">Level 48, Boulevard Plaza Tower<br>Downtown Dubai, UAE</p>
+          <p class="footer-contact-item">Inquiries: +971 4 800 HADI<br>WhatsApp: +971 50 123 4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p class="footer-legal-note">
+          © 2026 Hadi Real Estate. All rights reserved. Licensed real estate brokerage in the United Arab Emirates. Prices in AED.
+        </p>
+        <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold);">
+          DISCRETION • INTEGRITY • EXCELLENCE
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/property-detail.js"></script>
+</body>
+</html>

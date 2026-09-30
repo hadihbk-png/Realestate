@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Private Office | Hadi Real Estate UAE</title>
+  <meta name="description" content="Connect with Hadi Real Estate private advisory office in Downtown Dubai. Discreet consultations for property acquisitions, off-plan allocations, and sales.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Menu -->
+  <header class="top-nav solid-nav" id="topNav">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo brand-logo--charcoal" id="navBrandLogo" aria-label="Hadi Real Estate Home">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">REAL ESTATE</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/properties.html" class="nav-link">Properties</a></li>
+          <li><a href="/offplan.html" class="nav-link">Off-Plan</a></li>
+          <li><a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a></li>
+          <li><a href="/sell.html" class="nav-link">Sell</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline-charcoal btn-nav-register trigger-register-modal">
+          Register Interest
+        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="fullscreen-mobile-menu" id="fullscreenMobileMenu">
+    <div class="brand-logo brand-logo--charcoal" style="margin-bottom: 2rem;">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/properties.html" class="mobile-nav-link">Properties</a></li>
+      <li><a href="/offplan.html" class="mobile-nav-link">Off-Plan Projects</a></li>
+      <li><a href="/mortgage-calculator.html" class="mobile-nav-link">Mortgage Calculator</a></li>
+      <li><a href="/sell.html" class="mobile-nav-link">Sell Your Property</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-gold trigger-register-modal mobile-btn" style="width: 240px;">Register Interest</button>
+    </div>
+  </div>
+
+  <!-- Header Banner -->
+  <section class="page-header-banner">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">DUBAI PRIVATE OFFICE</span>
+      <h1 class="section-title">Connect with Hadi Real Estate</h1>
+      <p class="section-subtitle center">
+        Our executive partners are at your service for discreet consultations, private viewing arrangements, and portfolio advisory.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Details Section -->
+  <section class="section-padding">
+    <div class="container">
+      
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4.5rem; align-items: start;">
+        
+        <!-- Contact Form -->
+        <div class="form-card-container" style="background-color: var(--color-white); border: 1px solid var(--color-lightgray); padding: 3.5rem; box-shadow: var(--shadow-elevated);">
+          <span class="section-tag" style="margin-bottom: 0.4rem;">DIRECT INQUIRY</span>
+          <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 0.5rem;">Send a Confidential Note</h2>
+          <p style="font-size: 0.88rem; color: var(--color-warmgray); margin-bottom: 2rem;">
+            Whether seeking an off-market frond villa or exploring prime off-plan towers, we respond promptly with utmost discretion.
+          </p>
+
+          <form data-ajax-endpoint="/api/leads" id="mainContactForm">
+            <!-- Anti-Spam Honeypot Field -->
+            <input type="text" name="hp_website_fax" class="hp-fax-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="source" value="Contact Page Form">
+
+            <div class="form-grid">
+              
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" name="full_name" class="form-input" placeholder="Your name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Phone / WhatsApp Number *</label>
+                <input type="tel" name="phone" class="form-input" placeholder="+971 50 000 0000" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address (Optional)</label>
+                <input type="email" name="email" class="form-input" placeholder="client@domain.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Area of Interest</label>
+                <select name="property_type" class="form-select">
+                  <option value="Ready Luxury Residence Purchase">Ready Luxury Residence Purchase</option>
+                  <option value="Off-Plan Investment Allocation">Off-Plan Investment Allocation</option>
+                  <option value="Listing / Selling My UAE Property">Listing / Selling My UAE Property</option>
+                  <option value="Mortgage & Financing Guidance">Mortgage & Financing Guidance</option>
+                  <option value="Other Advisory">Other Advisory</option>
+                </select>
+              </div>
+
+              <div class="form-group form-full-width">
+                <label class="form-label">Your Message *</label>
+                <textarea name="notes" class="form-textarea" placeholder="Please detail your timeline, desired location, or specific property question..." required></textarea>
+              </div>
+
+              <div class="form-full-width" style="text-align: center; margin-top: 1rem;">
+                <button type="submit" class="btn btn-gold" style="min-width: 260px;">
+                  Send Confidential Message
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <div class="form-success-box">
+            <div class="success-reference">MESSAGE LOGGED: <span class="ref-number">HRE-MSG-7192</span></div>
+            <h3 class="success-heading">Message Dispatched</h3>
+            <p style="color: var(--color-warmgray); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              Thank you. Hadi Real Estate advisor will contact you within 24 hours.
+            </p>
+            <button class="btn btn-outline-charcoal" onclick="location.reload()">Send Another Note</button>
+          </div>
+        </div>
+
+        <!-- Office Details & Direct Contacts -->
+        <div>
+          <div style="background-color: var(--color-charcoal); color: var(--color-white); padding: 3rem; margin-bottom: 2rem;">
+            <span class="section-tag" style="color: var(--color-gold);">HEADQUARTERS</span>
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--color-white); margin-bottom: 1.5rem;">
+              Downtown Dubai Office
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.9rem; color: #B5B2AC;">
+              <div>
+                <strong style="color: var(--color-white); display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">
+                  Physical Address
+                </strong>
+                Level 48, Boulevard Plaza Tower 1<br>
+                Sheikh Mohammed bin Rashid Blvd<br>
+                Downtown Dubai, United Arab Emirates
+              </div>
+
+              <div>
+                <strong style="color: var(--color-white); display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">
+                  Telephone Inquiries
+                </strong>
+                General Concierge: +971 4 800 HADI<br>
+                Direct Broker Desk: +971 50 882 1928
+              </div>
+
+              <div>
+                <strong style="color: var(--color-white); display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem;">
+                  Office Hours
+                </strong>
+                Monday – Saturday: 9:00 AM – 7:00 PM GST<br>
+                Sunday: Private Viewings by Appointment Only
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <a href="https://wa.me/971501234567" target="_blank" class="btn btn-outline-white" style="width: 100%;">
+                Start WhatsApp Private Chat
+              </a>
+            </div>
+          </div>
+
+          <div style="background-color: var(--color-offwhite); border: 1px solid var(--color-lightgray); padding: 2rem; text-align: center;">
+            <span class="section-tag" style="margin-bottom: 0.3rem;">CURRENCY SPECIFICATION</span>
+            <p style="font-size: 0.85rem; color: var(--color-warmgray); line-height: 1.7;">
+              All transactions, escrow contracts, and conveyancing are executed in <strong>UAE Dirhams (AED)</strong> or equivalent authorized major currencies.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Dark Footer -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo brand-logo--white">
+            <span class="logo-word">HADI</span>
+            <span class="logo-line"></span>
+            <span class="logo-subtext">REAL ESTATE</span>
+          </div>
+          <p class="footer-brand-desc">
+            Bespoke luxury brokerage and investment advisory for prime residential and off-plan assets in the United Arab Emirates.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">PORTFOLIO</div>
+          <ul class="footer-links-list">
+            <li><a href="/properties.html" class="footer-link">Ready Residences</a></li>
+            <li><a href="/offplan.html" class="footer-link">Off-Plan Projects</a></li>
+            <li><a href="/properties.html?community=Palm+Jumeirah" class="footer-link">Palm Jumeirah</a></li>
+            <li><a href="/properties.html?community=Downtown" class="footer-link">Downtown Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ADVISORY</div>
+          <ul class="footer-links-list">
+            <li><a href="/mortgage-calculator.html" class="footer-link">Mortgage Calculator</a></li>
+            <li><a href="/sell.html" class="footer-link">Sell Your Property</a></li>
+            <li><a href="/about.html" class="footer-link">About Hadi</a></li>
+            <li><a href="/contact.html" class="footer-link">Contact Office</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">PRIVATE OFFICE</div>
+          <p class="footer-contact-item">Level 48, Boulevard Plaza Tower<br>Downtown Dubai, UAE</p>
+          <p class="footer-contact-item">Inquiries: +971 4 800 HADI<br>WhatsApp: +971 50 123 4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p class="footer-legal-note">
+          © 2026 Hadi Real Estate. All rights reserved. Licensed real estate brokerage in the United Arab Emirates. Prices in AED.
+        </p>
+        <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold);">
+          DISCRETION • INTEGRITY • EXCELLENCE
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+</body>
+</html>

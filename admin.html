@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin & Agent Portal | Hadi Real Estate</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Admin Portal Specific Theme */
+    :root {
+      --admin-bg: #F8F7F4;
+      --admin-card: #FFFFFF;
+      --admin-border: #E5E1D8;
+      --admin-charcoal: #1A1A1A;
+      --admin-gold: #B8975A;
+      --admin-gold-light: rgba(184, 151, 90, 0.12);
+      --admin-hot: #C93B2B;
+      --admin-warm: #D9822B;
+      --admin-cold: #7F8C8D;
+      --admin-won: #1E824C;
+    }
+
+    body {
+      background-color: var(--admin-bg);
+      color: var(--admin-charcoal);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Top Bar */
+    .admin-header {
+      background-color: #141414;
+      color: #FFFFFF;
+      border-bottom: 1px solid rgba(184, 151, 90, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-header-brand {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-decoration: none;
+    }
+    .admin-header-brand .logo-word {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      letter-spacing: 0.35em;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+    .admin-header-brand .logo-line {
+      width: 25px;
+      height: 1px;
+      background-color: var(--admin-gold);
+    }
+    .admin-header-brand .logo-subtext {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--admin-gold);
+    }
+    .admin-portal-badge {
+      font-size: 0.65rem;
+      background: rgba(184, 151, 90, 0.2);
+      border: 1px solid var(--admin-gold);
+      color: var(--admin-gold);
+      padding: 3px 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Admin Nav Tabs */
+    .admin-nav-tabs {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .admin-nav-tab {
+      background: transparent;
+      border: none;
+      color: #A0A0A0;
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .admin-nav-tab:hover {
+      color: #FFFFFF;
+    }
+    .admin-nav-tab.active {
+      color: var(--admin-gold);
+      border-bottom-color: var(--admin-gold);
+      font-weight: 600;
+    }
+
+    /* Right Actions: Bell & User Info */
+    .admin-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .bell-container {
+      position: relative;
+      cursor: pointer;
+    }
+    .bell-btn {
+      background: #222222;
+      border: 1px solid #333333;
+      color: #E0E0E0;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .bell-btn:hover {
+      border-color: var(--admin-gold);
+      color: var(--admin-gold);
+    }
+    .bell-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: var(--admin-hot);
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #141414;
+    }
+    .bell-dropdown {
+      position: absolute;
+      top: 48px;
+      right: 0;
+      width: 320px;
+      background: #1A1A1A;
+      border: 1px solid #333333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 1100;
+      display: none;
+    }
+    .bell-dropdown.active {
+      display: block;
+    }
+    .bell-header {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #282828;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--admin-gold);
+    }
+    .bell-list {
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .bell-item {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #222222;
+      color: #CCCCCC;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .bell-item:hover {
+      background: #252525;
+    }
+    .bell-item-name {
+      font-weight: 600;
+      color: #FFFFFF;
+      font-size: 0.82rem;
+    }
+    .bell-item-meta {
+      font-size: 0.72rem;
+      color: #888888;
+      margin-top: 2px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #222222;
+      border: 1px solid #333333;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+    }
+    .user-pill strong {
+      color: #FFFFFF;
+    }
+    .user-pill span {
+      color: var(--admin-gold);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .btn-signout {
+      background: transparent;
+      border: 1px solid #444444;
+      color: #AAAAAA;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-signout:hover {
+      border-color: var(--admin-hot);
+      color: var(--admin-hot);
+    }
+
+    /* Sub-header / Status Bar */
+    .admin-sub-bar {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid var(--admin-border);
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-page-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin: 0;
+      color: var(--admin-charcoal);
+      font-weight: 400;
+    }
+    .admin-quick-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Layout Containers */
+    .admin-content {
+      padding: 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .tab-view {
+      display: none;
+    }
+    .tab-view.active {
+      display: block;
+    }
+
+    /* KPI Cards Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--admin-border);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .kpi-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--admin-gold);
+    }
+    .kpi-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-warmgray);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+    .kpi-value {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--admin-charcoal);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .kpi-subtext {
+      font-size: 0.75rem;
+      color: var(--color-warmgray);
+    }
+
+    /* Charts & Section Grids */
+    .dashboard-analytics-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .analytics-card {
+      background: #FFFFFF;
+      border: 1px solid var(--admin-border);
+      padding: 1.5rem 1.8rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .analytics-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--admin-charcoal);
+      margin-bottom: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .analytics-subtitle {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-warmgray);
+    }
+
+    /* Funnel Bars */
+    .funnel-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+    .funnel-label {
+      width: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--admin-charcoal);
+    }
+    .funnel-track {
+      flex: 1;
+      height: 24px;
+      background: #EFEFEF;
+      position: relative;
+      overflow: hidden;
+    }
+    .funnel-fill {
+      height: 100%;
+      background: var(--admin-gold);
+      transition: width 0.5s ease;
+    }
+    .funnel-count {
+      width: 60px;
+      text-align: right;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--admin-charcoal);
+    }
+
+    /* Score Temperature Tags */
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 0;
+    }
+    .score-badge.HOT {
+      background-color: rgba(201, 59, 43, 0.12);
+      color: var(--admin-hot);
+      border: 1px solid rgba(201, 59, 43, 0.35);
+    }
+    .score-badge.WARM {
+      background-color: rgba(217, 130, 43, 0.12);
+      color: var(--admin-warm);
+      border: 1px solid rgba(217, 130, 43, 0.35);
+    }
+    .score-badge.COLD {
+      background-color: rgba(127, 140, 141, 0.12);
+      color: var(--admin-cold);
+      border: 1px solid rgba(127, 140, 141, 0.35);
+    }
+
+    /* Stage Badges */
+    .stage-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1px solid #CCC;
+      background: #F4F4F4;
+      color: #333;
+    }
+    .stage-badge.New { border-color: #3498DB; color: #3498DB; background: rgba(52, 152, 219, 0.08); }
+    .stage-badge.Contacted { border-color: #9B59B6; color: #9B59B6; background: rgba(155, 89, 182, 0.08); }
+    .stage-badge.Viewing { border-color: var(--admin-gold); color: var(--admin-gold); background: var(--admin-gold-light); }
+    .stage-badge.Offer { border-color: #E67E22; color: #E67E22; background: rgba(230, 126, 34, 0.08); }
+    .stage-badge.Won { border-color: var(--admin-won); color: var(--admin-won); background: rgba(30, 130, 76, 0.1); }
+    .stage-badge.Lost { border-color: #7F8C8D; color: #7F8C8D; background: rgba(127, 140, 141, 0.08); }
+
+    /* Kanban Board Layout */
+    .kanban-board-container {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      padding-bottom: 1.5rem;
+      min-height: calc(100vh - 280px);
+    }
+    .kanban-column {
+      flex: 0 0 280px;
+      background: #EFECE6;
+      border: 1px solid var(--admin-border);
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 260px);
+    }
+    .kanban-col-header {
+      padding: 1rem;
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--admin-charcoal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .kanban-col-header h4 {
+      margin: 0;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+    }
+    .kanban-col-count {
+      font-size: 0.72rem;
+      background: #F0EFEA;
+      padding: 2px 7px;
+      font-weight: 600;
+      color: var(--admin-charcoal);
+    }
+    .kanban-cards-wrapper {
+      padding: 0.85rem;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .kanban-cards-wrapper.drag-over {
+      background: rgba(184, 151, 90, 0.15);
+      outline: 2px dashed var(--admin-gold);
+    }
+
+    /* Kanban Cards */
+    .lead-card {
+      background: #FFFFFF;
+      border: 1px solid #DCD8CF;
+      padding: 1rem;
+      cursor: grab;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .lead-card:hover {
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      border-color: var(--admin-gold);
+      transform: translateY(-2px);
+    }
+    .lead-card.dragging {
+      opacity: 0.4;
+      cursor: grabbing;
+    }
+    .lead-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+    }
+    .lead-card-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--admin-charcoal);
+      line-height: 1.2;
+    }
+    .lead-card-budget {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--admin-gold);
+      margin-bottom: 0.4rem;
+    }
+    .lead-card-meta {
+      font-size: 0.72rem;
+      color: var(--color-warmgray);
+      margin-bottom: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .lead-card-actions {
+      border-top: 1px solid #F0EEE9;
+      padding-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .quick-comm-btn {
+      color: var(--admin-charcoal);
+      text-decoration: none;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 6px;
+      background: #F5F4F0;
+      border: 1px solid #E5E1D8;
+      transition: all 0.15s;
+    }
+    .quick-comm-btn:hover {
+      background: var(--admin-gold);
+      color: #FFFFFF;
+      border-color: var(--admin-gold);
+    }
+
+    /* Leads Table & Filters */
+    .admin-controls-bar {
+      background: #FFFFFF;
+      border: 1px solid var(--admin-border);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .filters-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .admin-search-input {
+      background: #FAFAFA;
+      border: 1px solid #D0CCC4;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.82rem;
+      min-width: 250px;
+      font-family: var(--font-sans);
+    }
+    .admin-filter-select {
+      background: #FAFAFA;
+      border: 1px solid #D0CCC4;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+      cursor: pointer;
+    }
+
+    /* Data Tables */
+    .admin-table-container {
+      background: #FFFFFF;
+      border: 1px solid var(--admin-border);
+      box-shadow: var(--shadow-soft);
+      overflow-x: auto;
+    }
+    .admin-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+    .admin-data-table th {
+      background-color: var(--admin-charcoal);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.1rem;
+      font-weight: 500;
+    }
+    .admin-data-table td {
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid #EDE9E1;
+      vertical-align: middle;
+    }
+    .admin-data-table tr:hover td {
+      background-color: #FBF9F5;
+    }
+
+    /* Lead Detail Drawer / Modal */
+    .lead-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 2000;
+      display: none;
+      justify-content: flex-end;
+    }
+    .lead-drawer-overlay.active {
+      display: flex;
+    }
+    .lead-drawer {
+      width: 600px;
+      max-width: 90vw;
+      background: #FFFFFF;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .lead-drawer-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--color-warmgray);
+    }
+
+    /* Won Deal Modal */
+    .deal-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .deal-modal-overlay.active {
+      display: flex;
+    }
+    .deal-modal-box {
+      background: #FFFFFF;
+      border-top: 4px solid var(--admin-won);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    /* Leaderboard Meters */
+    .meter-track {
+      background: #ECE9E2;
+      height: 12px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--admin-charcoal), var(--admin-gold));
+    }
+
+    /* Stale Lead Highlight */
+    .stale-row td {
+      background-color: #FFF9F7 !important;
+    }
+    .stale-tag {
+      font-size: 0.65rem;
+      background: #FFECE8;
+      border: 1px solid #FFC9C0;
+      color: var(--admin-hot);
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Top Admin Navigation Header -->
+  <header class="admin-header">
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <a href="/admin.html" class="admin-header-brand">
+        <div>
+          <span class="logo-word">HADI</span>
+          <div class="logo-line"></div>
+          <span class="logo-subtext">REAL ESTATE</span>
+        </div>
+      </a>
+      <span class="admin-portal-badge" id="adminPortalRoleBadge">CRM PORTAL</span>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="admin-nav-tabs">
+      <button class="admin-nav-tab active" data-tab="tabDashboard">
+        <span>📊</span> Dashboard
+      </button>
+      <button class="admin-nav-tab" data-tab="tabKanban">
+        <span>📋</span> Kanban Board
+      </button>
+      <button class="admin-nav-tab" data-tab="tabLeads">
+        <span>👥</span> Leads List
+      </button>
+      <button class="admin-nav-tab" data-tab="tabViewings">
+        <span>📅</span> Viewings
+      </button>
+      <button class="admin-nav-tab" data-tab="tabLeaderboard">
+        <span>🏆</span> Leaderboard
+      </button>
+      <button class="admin-nav-tab" data-tab="tabStale">
+        <span>⏱️</span> Inactive (3+ Days)
+      </button>
+      <button class="admin-nav-tab" data-tab="tabProperties">
+        <span>🏢</span> Properties & Projects
+      </button>
+    </nav>
+
+    <!-- Right Controls: Bell Notification & User Profile -->
+    <div class="admin-header-actions">
+      <!-- 1-Minute Refresh Bell Icon -->
+      <div class="bell-container" id="bellContainer">
+        <button class="bell-btn" id="bellBtn" title="New Uncontacted Leads (Refreshes every minute)" aria-label="Notification bell">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="bell-badge" id="bellBadge" style="display: none;">0</span>
+        </button>
+
+        <!-- Dropdown on click -->
+        <div class="bell-dropdown" id="bellDropdown">
+          <div class="bell-header">
+            <span>Incoming New Leads</span>
+            <span id="bellCountSummary" style="color: #FFF; font-weight: bold;">0 New</span>
+          </div>
+          <div class="bell-list" id="bellList">
+            <!-- Rendered by admin.js -->
+            <div style="padding: 1.5rem; text-align: center; color: #888; font-size: 0.8rem;">
+              No unread leads right now.
+            </div>
+          </div>
+          <div style="padding: 0.6rem; text-align: center; background: #202020; border-top: 1px solid #282828;">
+            <button class="btn-clean" style="color: var(--admin-gold); font-size: 0.72rem; cursor: pointer;" onclick="switchAdminTab('tabLeads', { stage: 'New' })">
+              View All New Leads &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Badge -->
+      <div class="user-pill" id="userPill">
+        <img id="userAvatarImg" src="assets/images/agent1.jpg" alt="Profile" style="width: 28px; height: 28px; object-fit: cover; border-radius: 50%; border: 1px solid var(--admin-gold);">
+        <span id="userRoleTag">ADMIN</span>
+        <strong id="userNameTag">Hadi (Managing Principal)</strong>
+      </div>
+
+      <!-- Sign Out Button -->
+      <button class="btn-signout" id="adminSignOutBtn" title="Sign out of portal">
+        Sign Out
+      </button>
+    </div>
+  </header>
+
+  <!-- Database Connection Banner -->
+  <div id="adminDbStatusBanner" class="db-indicator-banner">
+    Checking database connection...
+  </div>
+
+  <!-- Sub-bar with title & export button -->
+  <div class="admin-sub-bar">
+    <div>
+      <span class="section-tag" style="margin-bottom: 0.2rem;" id="subBarTag">EXECUTIVE OVERVIEW</span>
+      <h1 class="admin-page-title" id="subBarTitle">Brokerage Operations Dashboard</h1>
+    </div>
+    <div class="admin-quick-actions">
+      <button class="btn btn-outline-charcoal" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;" onclick="exportLeadsToCSV()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline; vertical-align:middle; margin-right:4px;">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download Leads to Excel (CSV)
+      </button>
+      <button class="btn btn-gold" style="padding: 0.6rem 1.2rem; font-size: 0.75rem;" onclick="openAddPropertyModal()">
+        + Add New Property
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="admin-content">
+
+    <!-- ==================================================================== -->
+    <!-- TAB 1: EXECUTIVE DASHBOARD                                           -->
+    <!-- ==================================================================== -->
+    <div class="tab-view active" id="tabDashboard">
+      
+      <!-- 4 Top KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">New Leads Today</div>
+          <div class="kpi-value" id="kpiNewLeads">0</div>
+          <div class="kpi-subtext" id="kpiNewLeadsSub">Incoming client requests</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Total Pipeline Value</div>
+          <div class="kpi-value" id="kpiPipelineValue" style="color: var(--admin-gold);">AED 0</div>
+          <div class="kpi-subtext">Active transactions in progress</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Viewings Scheduled</div>
+          <div class="kpi-value" id="kpiViewingsWeek">0</div>
+          <div class="kpi-subtext">Private on-site property walkthroughs</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Sales & 2% Commission</div>
+          <div class="kpi-value" id="kpiSalesCommission" style="color: var(--admin-won);">AED 0</div>
+          <div class="kpi-subtext" id="kpiSalesVolume">0 Deals Closed This Month</div>
+        </div>
+      </div>
+
+      <!-- Charts & Funnel Breakdown -->
+      <div class="dashboard-analytics-grid">
+        
+        <!-- Pipeline Stage Funnel Chart -->
+        <div class="analytics-card">
+          <div class="analytics-title">
+            <span>Deal Pipeline Velocity</span>
+            <span class="analytics-subtitle">Current Distribution Across Stages</span>
+          </div>
+
+          <div id="funnelChartContainer" style="padding-top: 0.5rem;">
+            <!-- Rendered by admin.js -->
+            <div class="funnel-bar-row">
+              <span class="funnel-label">New Leads</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarNew" style="width: 0%;"></div></div>
+              <span class="funnel-count" id="funnelCountNew">0</span>
+            </div>
+            <div class="funnel-bar-row">
+              <span class="funnel-label">Contacted</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarContacted" style="width: 0%; background: #9B59B6;"></div></div>
+              <span class="funnel-count" id="funnelCountContacted">0</span>
+            </div>
+            <div class="funnel-bar-row">
+              <span class="funnel-label">Viewing</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarViewing" style="width: 0%; background: var(--admin-gold);"></div></div>
+              <span class="funnel-count" id="funnelCountViewing">0</span>
+            </div>
+            <div class="funnel-bar-row">
+              <span class="funnel-label">Offer Made</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarOffer" style="width: 0%; background: #E67E22;"></div></div>
+              <span class="funnel-count" id="funnelCountOffer">0</span>
+            </div>
+            <div class="funnel-bar-row">
+              <span class="funnel-label">Won (Closed)</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarWon" style="width: 0%; background: var(--admin-won);"></div></div>
+              <span class="funnel-count" id="funnelCountWon">0</span>
+            </div>
+            <div class="funnel-bar-row">
+              <span class="funnel-label">Lost</span>
+              <div class="funnel-track"><div class="funnel-fill" id="funnelBarLost" style="width: 0%; background: #7F8C8D;"></div></div>
+              <span class="funnel-count" id="funnelCountLost">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead Quality / Temperature Gauge -->
+        <div class="analytics-card">
+          <div class="analytics-title">
+            <span>Lead Temperature</span>
+            <span class="analytics-subtitle">0-100 Scoring</span>
+          </div>
+
+          <p style="font-size: 0.78rem; color: var(--color-warmgray); margin-bottom: 1.5rem; line-height: 1.5;">
+            Algorithm awards up to 100 points based on Cash readiness (+25), Buying timeline (+20), Budget scale (+25), Phone verified (+20), and Specific property interest (+10).
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(201, 59, 43, 0.08); border-left: 3px solid var(--admin-hot);">
+              <div>
+                <strong style="color: var(--admin-hot); font-size: 0.85rem;">HOT LEADS (70 - 100)</strong>
+                <div style="font-size: 0.72rem; color: var(--color-warmgray);">Immediate buyers, cash liquidity, luxury budget</div>
+              </div>
+              <span style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--admin-hot);" id="tempCountHot">0</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(217, 130, 43, 0.08); border-left: 3px solid var(--admin-warm);">
+              <div>
+                <strong style="color: var(--admin-warm); font-size: 0.85rem;">WARM LEADS (40 - 69)</strong>
+                <div style="font-size: 0.72rem; color: var(--color-warmgray);">Qualified buyers, active search, mortgage or flexible</div>
+              </div>
+              <span style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--admin-warm);" id="tempCountWarm">0</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: rgba(127, 140, 141, 0.08); border-left: 3px solid var(--admin-cold);">
+              <div>
+                <strong style="color: var(--admin-cold); font-size: 0.85rem;">COLD LEADS (&lt; 40)</strong>
+                <div style="font-size: 0.72rem; color: var(--color-warmgray);">Early exploratory, unverified requirements</div>
+              </div>
+              <span style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--admin-cold);" id="tempCountCold">0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Action Cards Section -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+        <div style="background: #FFFFFF; border: 1px solid var(--admin-border); padding: 1.5rem;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem;">Stale Leads Alert</h4>
+          <p style="font-size: 0.8rem; color: var(--color-warmgray); margin-bottom: 1rem;">
+            <strong id="staleAlertCount" style="color: var(--admin-hot);">0</strong> buyers have not received contact or notes in 3+ days.
+          </p>
+          <button class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.5rem 1rem;" onclick="switchAdminTab('tabStale')">
+            Review Inactive Leads &rarr;
+          </button>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--admin-border); padding: 1.5rem;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem;">Kanban Pipeline</h4>
+          <p style="font-size: 0.8rem; color: var(--color-warmgray); margin-bottom: 1rem;">
+            Drag deals smoothly between New, Contacted, Viewing, Offer, Won, and Lost.
+          </p>
+          <button class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.5rem 1rem;" onclick="switchAdminTab('tabKanban')">
+            Open Pipeline Board &rarr;
+          </button>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--admin-border); padding: 1.5rem;">
+          <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.5rem;">Data Export</h4>
+          <p style="font-size: 0.8rem; color: var(--color-warmgray); margin-bottom: 1rem;">
+            Export client data, budget preferences, scores, and stages to Excel-compatible CSV.
+          </p>
+          <button class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.5rem 1rem;" onclick="exportLeadsToCSV()">
+            Export Client Ledger &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 2: KANBAN PIPELINE BOARD                                         -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabKanban">
+      <div style="margin-bottom: 1.2rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-warmgray);">
+            INTERACTIVE DEAL FLOW
+          </span>
+          <p style="font-size: 0.85rem; color: var(--color-warmgray); margin: 0;">
+            Drag cards between columns. Dragging to <strong>Won</strong> triggers automatic 2% commission & property sold registration.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.4rem 0.8rem;" onclick="loadKanbanBoard()">
+            ↻ Refresh Board
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 Kanban Columns -->
+      <div class="kanban-board-container" id="kanbanContainer">
+        <!-- New Column -->
+        <div class="kanban-column" data-stage="New">
+          <div class="kanban-col-header">
+            <h4>New Leads</h4>
+            <span class="kanban-col-count" id="colCountNew">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsNew"></div>
+        </div>
+
+        <!-- Contacted Column -->
+        <div class="kanban-column" data-stage="Contacted">
+          <div class="kanban-col-header" style="border-bottom-color: #9B59B6;">
+            <h4>Contacted</h4>
+            <span class="kanban-col-count" id="colCountContacted">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsContacted"></div>
+        </div>
+
+        <!-- Viewing Column -->
+        <div class="kanban-column" data-stage="Viewing">
+          <div class="kanban-col-header" style="border-bottom-color: var(--admin-gold);">
+            <h4>Viewing</h4>
+            <span class="kanban-col-count" id="colCountViewing">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsViewing"></div>
+        </div>
+
+        <!-- Offer Column -->
+        <div class="kanban-column" data-stage="Offer">
+          <div class="kanban-col-header" style="border-bottom-color: #E67E22;">
+            <h4>Offer In</h4>
+            <span class="kanban-col-count" id="colCountOffer">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsOffer"></div>
+        </div>
+
+        <!-- Won Column -->
+        <div class="kanban-column" data-stage="Won">
+          <div class="kanban-col-header" style="border-bottom-color: var(--admin-won);">
+            <h4 style="color: var(--admin-won);">Won (Sold)</h4>
+            <span class="kanban-col-count" id="colCountWon">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsWon"></div>
+        </div>
+
+        <!-- Lost Column -->
+        <div class="kanban-column" data-stage="Lost">
+          <div class="kanban-col-header" style="border-bottom-color: #7F8C8D;">
+            <h4 style="color: #7F8C8D;">Lost / Archive</h4>
+            <span class="kanban-col-count" id="colCountLost">0</span>
+          </div>
+          <div class="kanban-cards-wrapper" id="kanbanCardsLost"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 3: LEADS LIST WITH SEARCH & FILTERS                              -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabLeads">
+      
+      <!-- Filter Bar -->
+      <div class="admin-controls-bar">
+        <div class="filters-group">
+          <!-- Search box -->
+          <input type="text" id="leadSearchInput" class="admin-search-input" placeholder="Search name, phone, email, notes...">
+
+          <!-- Stage filter -->
+          <select id="leadStageFilter" class="admin-filter-select">
+            <option value="all">All Stages</option>
+            <option value="New">Stage: New</option>
+            <option value="Contacted">Stage: Contacted</option>
+            <option value="Viewing">Stage: Viewing</option>
+            <option value="Offer">Stage: Offer</option>
+            <option value="Won">Stage: Won</option>
+            <option value="Lost">Stage: Lost</option>
+          </select>
+
+          <!-- Temperature filter -->
+          <select id="leadScoreFilter" class="admin-filter-select">
+            <option value="all">All Temperatures</option>
+            <option value="HOT">HOT Leads (70-100)</option>
+            <option value="WARM">WARM Leads (40-69)</option>
+            <option value="COLD">COLD Leads (&lt;40)</option>
+          </select>
+
+          <!-- Stale filter -->
+          <label style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; cursor: pointer;">
+            <input type="checkbox" id="leadStaleFilter">
+            <span>Inactive 3+ Days Only</span>
+          </label>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.55rem 1rem;" onclick="exportLeadsToCSV()">
+            📥 Download to Excel
+          </button>
+        </div>
+      </div>
+
+      <!-- Leads Table -->
+      <div class="admin-table-container">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Score</th>
+              <th>Client Name</th>
+              <th>Contact Details</th>
+              <th>Budget (AED)</th>
+              <th>Stage</th>
+              <th>Source Form</th>
+              <th>Assigned Broker</th>
+              <th>Last Activity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <!-- Populated by admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 4: SCHEDULED VIEWINGS                                            -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabViewings">
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-warmgray);">
+            CALENDAR & ON-SITE INSPECTIONS
+          </span>
+          <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0;">Scheduled Private Viewings</h2>
+        </div>
+      </div>
+
+      <div class="admin-table-container">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Residence / Property</th>
+              <th>Client Name</th>
+              <th>Phone Number</th>
+              <th>Assigned Broker</th>
+              <th>Inspection Date & Time</th>
+              <th>Status</th>
+              <th>Special Requests</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="viewingsTableBody">
+            <!-- Populated by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 5: AGENT LEADERBOARD & TARGETS                                   -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabLeaderboard">
+      <div style="margin-bottom: 1.5rem;">
+        <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-warmgray);">
+          BROKER PERFORMANCE & QUOTA REALIZATION
+        </span>
+        <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0;">Monthly Agent Leaderboard</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem;" id="leaderboardCardsGrid">
+        <!-- Rendered by admin.js -->
+      </div>
+
+      <!-- Closed Sales Breakdown Table -->
+      <div class="admin-table-container">
+        <div style="padding: 1.2rem 1.5rem; background: #FFFFFF; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin: 0;">Completed Transactions & 2% Commission Log</h3>
+          <span style="font-size: 0.72rem; color: var(--admin-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">2% STANDARD RERA BROKERAGE COMMISSION</span>
+        </div>
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>Sale ID</th>
+              <th>Property Sold</th>
+              <th>Buyer Name</th>
+              <th>Closing Broker</th>
+              <th>Sale Price (AED)</th>
+              <th>2% Commission (AED)</th>
+              <th>Closing Date</th>
+            </tr>
+          </thead>
+          <tbody id="salesTableBody">
+            <!-- Populated by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 6: INACTIVE LEADS (3+ DAYS NO ACTIVITY)                          -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabStale">
+      <div style="margin-bottom: 1.5rem; background: rgba(201, 59, 43, 0.08); border-left: 4px solid var(--admin-hot); padding: 1.2rem 1.5rem;">
+        <div style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--admin-hot); font-weight: 700;">
+          URGENT CLIENT FOLLOW-UP NEEDED
+        </div>
+        <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0.2rem 0; color: var(--admin-charcoal);">
+          Leads With No Activity For 3+ Days
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--color-warmgray); margin: 0;">
+          These prospective buyers have not had notes, status updates, or scheduled viewings in more than 72 hours. Reach out immediately via WhatsApp or telephone.
+        </p>
+      </div>
+
+      <div class="admin-table-container">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Score</th>
+              <th>Client Name</th>
+              <th>Phone</th>
+              <th>Budget (AED)</th>
+              <th>Stage</th>
+              <th>Assigned Broker</th>
+              <th>Last Touched</th>
+              <th>Quick Reach Out</th>
+            </tr>
+          </thead>
+          <tbody id="staleLeadsTableBody">
+            <!-- Populated by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- TAB 7: PROPERTIES & PROJECTS CRUD                                    -->
+    <!-- ==================================================================== -->
+    <div class="tab-view" id="tabProperties">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-warmgray);">
+            PORTFOLIO REPOSITORY
+          </span>
+          <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 0;">Manage Properties & Off-Plan Projects</h2>
+        </div>
+        <div style="display: flex; gap: 0.8rem;">
+          <button class="btn btn-gold" style="font-size: 0.75rem; padding: 0.6rem 1.2rem;" onclick="openAddPropertyModal()">
+            + Add Ready Property
+          </button>
+          <button class="btn btn-outline-charcoal" style="font-size: 0.75rem; padding: 0.6rem 1.2rem;" onclick="openAddProjectModal()">
+            + Add Off-Plan Project
+          </button>
+        </div>
+      </div>
+
+      <!-- Properties Table -->
+      <div style="margin-bottom: 3rem;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1rem;">Ready Residences</h3>
+        <div class="admin-table-container">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Community</th>
+                <th>Type</th>
+                <th>Price (AED)</th>
+                <th>Beds / Baths / SqFt</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="crudPropertiesTableBody">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Off-Plan Projects Table -->
+      <div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 1rem;">Off-Plan Developments</h3>
+        <div class="admin-table-container">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Project Name</th>
+                <th>Developer</th>
+                <th>Community</th>
+                <th>Starting Price (AED)</th>
+                <th>Handover Date</th>
+                <th>Payment Plan</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="crudProjectsTableBody">
+              <!-- Populated by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: LEAD DETAILS DRAWER                                             -->
+  <!-- ====================================================================== -->
+  <div class="lead-drawer-overlay" id="leadDrawerOverlay">
+    <div class="lead-drawer" id="leadDrawer">
+      <button class="lead-drawer-close" onclick="closeLeadDrawer()">&times;</button>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <span class="section-tag" id="drawerLeadScoreLabel">WARM LEAD</span>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; margin: 0.2rem 0;" id="drawerClientName">Client Name</h2>
+        <span style="font-size: 0.8rem; color: var(--color-warmgray);" id="drawerSourceTag">Source: Website Form</span>
+      </div>
+
+      <!-- Quick Action Communication Buttons -->
+      <div style="display: flex; gap: 0.8rem; margin-bottom: 2rem;">
+        <a id="drawerCallBtn" href="tel:" class="btn btn-outline-charcoal" style="flex: 1; text-align: center; text-decoration: none; padding: 0.75rem;">
+          📞 Call Client
+        </a>
+        <a id="drawerWhatsappBtn" href="https://wa.me/" target="_blank" class="btn btn-gold" style="flex: 1; text-align: center; text-decoration: none; padding: 0.75rem;">
+          💬 WhatsApp Client
+        </a>
+      </div>
+
+      <!-- Lead Details Grid -->
+      <div style="background: #F8F7F4; border: 1px solid var(--admin-border); padding: 1.25rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.82rem;">
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Phone Number</span>
+          <strong id="drawerPhone">+971 50 000 0000</strong>
+        </div>
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Email Address</span>
+          <strong id="drawerEmail">—</strong>
+        </div>
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Budget (AED)</span>
+          <strong id="drawerBudget" style="color: var(--admin-gold);">AED 25M</strong>
+        </div>
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Preferred Location</span>
+          <strong id="drawerCommunity">Palm Jumeirah</strong>
+        </div>
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Property Type</span>
+          <strong id="drawerPropertyType">Beachfront Villa</strong>
+        </div>
+        <div>
+          <span style="color: var(--color-warmgray); display: block; font-size: 0.7rem; text-transform: uppercase;">Lead Quality Score</span>
+          <strong id="drawerScorePoints">85 / 100</strong>
+        </div>
+      </div>
+
+      <!-- Stage & Assignment Management Form -->
+      <div style="border-top: 1px solid var(--admin-border); padding-top: 1.5rem; margin-bottom: 2rem;">
+        <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 1rem;">Pipeline Management</h4>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label class="form-label" style="font-size: 0.72rem;">Current Stage</label>
+            <select id="drawerStageSelect" class="form-select" onchange="handleDrawerStageChange(this.value)">
+              <option value="New">New</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Viewing">Viewing</option>
+              <option value="Offer">Offer</option>
+              <option value="Won">Won (Deal Closed)</option>
+              <option value="Lost">Lost</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" style="font-size: 0.72rem;">Assigned Broker</label>
+            <select id="drawerAgentSelect" class="form-select" onchange="handleDrawerAgentChange(this.value)">
+              <!-- Populated by staff list -->
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Viewing Quick Box -->
+      <div style="background: #FFFFFF; border: 1px solid var(--admin-border); padding: 1.25rem; margin-bottom: 2rem;">
+        <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.8rem;">Schedule Private Viewing</h4>
+        <form id="drawerBookingForm" onsubmit="handleDrawerBookViewing(event)">
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div>
+              <label class="form-label" style="font-size: 0.7rem;">Property to View</label>
+              <select id="drawerViewingPropertySelect" class="form-select" required>
+                <!-- Populated with properties -->
+              </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div>
+                <label class="form-label" style="font-size: 0.7rem;">Date</label>
+                <input type="date" id="drawerViewingDate" class="form-input" required>
+              </div>
+              <div>
+                <label class="form-label" style="font-size: 0.7rem;">Time</label>
+                <select id="drawerViewingTime" class="form-select">
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:30 AM">11:30 AM</option>
+                  <option value="02:00 PM">02:00 PM</option>
+                  <option value="04:30 PM">04:30 PM</option>
+                  <option value="06:00 PM">06:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" style="font-size: 0.7rem;">Special Client Requests</label>
+              <input type="text" id="drawerViewingRequests" class="form-input" placeholder="e.g. VIP chauffeur access, sunset viewing...">
+            </div>
+            <button type="submit" class="btn btn-outline-charcoal" style="font-size: 0.72rem; padding: 0.6rem;">
+              Confirm Viewing & Schedule
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Notes Thread & Add Note -->
+      <div style="border-top: 1px solid var(--admin-border); padding-top: 1.5rem; flex: 1;">
+        <h4 style="font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.8rem;">Activity Log & Advisor Notes</h4>
+        
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.2rem;">
+          <textarea id="drawerNewNoteText" class="form-textarea" style="height: 70px; font-size: 0.82rem;" placeholder="Log a call, client feedback, or offer update..."></textarea>
+          <button class="btn btn-gold" style="font-size: 0.72rem; padding: 0 1.2rem;" onclick="handleDrawerAddNote()">
+            Save Note
+          </button>
+        </div>
+
+        <div id="drawerNotesList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: DEAL CLOSING (WON STAGE) — ASKS SALE PRICE & 2% COMMISSION      -->
+  <!-- ====================================================================== -->
+  <div class="deal-modal-overlay" id="dealWonModalOverlay">
+    <div class="deal-modal-box">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="section-tag center">ACQUISITION COMPLETE</span>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; margin: 0.3rem 0; color: var(--admin-won);">
+          Mark Deal as WON
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--color-warmgray); margin: 0;">
+          Record the finalized sale price. The system will automatically calculate the <strong>2% agency commission</strong> and mark the corresponding property as <strong>SOLD</strong>.
+        </p>
+      </div>
+
+      <form id="dealWonForm" onsubmit="submitDealWon(event)">
+        <input type="hidden" id="wonLeadId">
+        
+        <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+          <div>
+            <label class="form-label">Buyer Client</label>
+            <input type="text" id="wonBuyerName" class="form-input" readonly style="background: #F7F5F2;">
+          </div>
+
+          <div>
+            <label class="form-label">Property Acquired</label>
+            <select id="wonPropertySelect" class="form-select" required onchange="handleWonPropertySelected()">
+              <!-- Populated with ready properties -->
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label">Final Agreed Sale Price (AED) *</label>
+            <input type="number" id="wonSalePrice" class="form-input" placeholder="e.g. 25000000" min="500000" required oninput="calculateLiveCommission(this.value)">
+          </div>
+
+          <!-- Live 2% Commission Calculation Box -->
+          <div style="background: rgba(30, 130, 76, 0.08); border: 1px solid rgba(30, 130, 76, 0.3); padding: 1.2rem; text-align: center;">
+            <span style="font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--admin-won); font-weight: 600; display: block; margin-bottom: 0.2rem;">
+              Calculated 2% Agency Commission
+            </span>
+            <div style="font-family: var(--font-serif); font-size: 2rem; color: var(--admin-won); font-weight: 600;" id="wonLiveCommission">
+              AED 0
+            </div>
+            <span style="font-size: 0.72rem; color: #555;">Standard UAE Brokerage Fee</span>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="button" class="btn btn-outline-charcoal" style="flex: 1;" onclick="closeDealWonModal()">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-gold" style="flex: 2; background-color: var(--admin-won); border-color: var(--admin-won); color: #FFF;">
+              Confirm Sale & Register 2% Commission
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: ADD / EDIT PROPERTY                                             -->
+  <!-- ====================================================================== -->
+  <div class="deal-modal-overlay" id="propertyModalOverlay">
+    <div class="deal-modal-box" style="max-width: 600px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1.2rem;" id="propModalTitle">Add New Luxury Property</h3>
+      
+      <form id="propertyCrudForm" onsubmit="submitPropertyCrud(event)">
+        <input type="hidden" id="crudPropId">
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem;">
+          <div>
+            <label class="form-label">Property Title *</label>
+            <input type="text" id="crudPropTitle" class="form-input" placeholder="e.g. The Amara Waterfront Villa" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label">Community *</label>
+              <select id="crudPropCommunity" class="form-select" required>
+                <option value="Palm Jumeirah">Palm Jumeirah</option>
+                <option value="Downtown Dubai">Downtown Dubai</option>
+                <option value="Dubai Hills Estate">Dubai Hills Estate</option>
+                <option value="Dubai Marina">Dubai Marina</option>
+                <option value="Business Bay">Business Bay</option>
+                <option value="JVC">JVC</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Property Type *</label>
+              <select id="crudPropType" class="form-select" required>
+                <option value="Beachfront Villa">Beachfront Villa</option>
+                <option value="Sky Penthouse">Sky Penthouse</option>
+                <option value="Golf Mansion">Golf Mansion</option>
+                <option value="Luxury Apartment">Luxury Apartment</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label">Price (AED) *</label>
+              <input type="number" id="crudPropPrice" class="form-input" placeholder="32000000" required>
+            </div>
+            <div>
+              <label class="form-label">Bedrooms *</label>
+              <input type="number" id="crudPropBeds" class="form-input" placeholder="5" required>
+            </div>
+            <div>
+              <label class="form-label">Bathrooms *</label>
+              <input type="number" id="crudPropBaths" class="form-input" placeholder="6" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label">Total SqFt</label>
+              <input type="number" id="crudPropSqft" class="form-input" placeholder="8500">
+            </div>
+            <div>
+              <label class="form-label">Status</label>
+              <select id="crudPropSold" class="form-select">
+                <option value="false">Active / Available</option>
+                <option value="true">Sold Out</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">Description</label>
+            <textarea id="crudPropDesc" class="form-textarea" placeholder="Prime architectural residence with bespoke finishes..."></textarea>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="button" class="btn btn-outline-charcoal" style="flex: 1;" onclick="closePropertyModal()">Cancel</button>
+            <button type="submit" class="btn btn-gold" style="flex: 2;">Save Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: ADD OFF-PLAN PROJECT                                            -->
+  <!-- ====================================================================== -->
+  <div class="deal-modal-overlay" id="projectModalOverlay">
+    <div class="deal-modal-box" style="max-width: 550px;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1.2rem;">Add Off-Plan Project</h3>
+      
+      <form id="projectCrudForm" onsubmit="submitProjectCrud(event)">
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem;">
+          <div>
+            <label class="form-label">Project Name *</label>
+            <input type="text" id="crudProjName" class="form-input" placeholder="e.g. Lumina Sky Residences" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label">Developer *</label>
+              <input type="text" id="crudProjDeveloper" class="form-input" placeholder="e.g. Aura Luxe Developments" required>
+            </div>
+            <div>
+              <label class="form-label">Community *</label>
+              <select id="crudProjCommunity" class="form-select" required>
+                <option value="Downtown Dubai">Downtown Dubai</option>
+                <option value="Palm Jumeirah">Palm Jumeirah</option>
+                <option value="Dubai Hills Estate">Dubai Hills Estate</option>
+                <option value="Business Bay">Business Bay</option>
+                <option value="Dubai Marina">Dubai Marina</option>
+                <option value="JVC">JVC</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label">Starting Price (AED) *</label>
+              <input type="number" id="crudProjPrice" class="form-input" placeholder="4200000" required>
+            </div>
+            <div>
+              <label class="form-label">Handover Date *</label>
+              <input type="text" id="crudProjHandover" class="form-input" placeholder="Q4 2028" required>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Payment Plan</label>
+            <input type="text" id="crudProjPlan" class="form-input" placeholder="e.g. 70/30 Payment Plan">
+          </div>
+          <div>
+            <label class="form-label">Project Description</label>
+            <textarea id="crudProjDesc" class="form-textarea" placeholder="Visionary architectural residences..."></textarea>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+            <button type="button" class="btn btn-outline-charcoal" style="flex: 1;" onclick="closeProjectModal()">Cancel</button>
+            <button type="submit" class="btn btn-gold" style="flex: 2;">Save Project</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Universal Scripts -->
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

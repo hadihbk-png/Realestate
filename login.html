@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff & Advisor Portal Login | Hadi Real Estate</title>
+  <meta name="description" content="Private internal login for Hadi Real Estate licensed advisors, brokers, and managing principals.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #E8E8E8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    .login-card {
+      background-color: #1A1A1A;
+      border: 1px solid rgba(184, 151, 90, 0.3);
+      width: 100%;
+      max-width: 480px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+    .login-brand {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .login-brand .logo-word {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      letter-spacing: 0.35em;
+      color: #FFFFFF;
+      font-weight: 300;
+      display: block;
+    }
+    .login-brand .logo-line {
+      width: 45px;
+      height: 1px;
+      background-color: var(--color-gold);
+      margin: 0.6rem auto;
+      display: block;
+    }
+    .login-brand .logo-subtext {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #B8975A;
+      display: block;
+    }
+    .login-form-group {
+      margin-bottom: 1.5rem;
+    }
+    .login-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #A0A0A0;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+    .login-input {
+      width: 100%;
+      background-color: #242424;
+      border: 1px solid #383838;
+      color: #FFFFFF;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.92rem;
+      font-family: var(--font-sans);
+      border-radius: 0;
+      transition: all 0.25s ease;
+    }
+    .login-input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background-color: #2A2A2A;
+    }
+    .login-btn {
+      width: 100%;
+      background-color: var(--color-gold);
+      color: var(--color-charcoal);
+      border: 1px solid var(--color-gold);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    .login-btn:hover {
+      background-color: transparent;
+      color: var(--color-gold);
+    }
+    .login-error-box {
+      display: none;
+      background-color: rgba(220, 53, 69, 0.15);
+      border: 1px solid rgba(220, 53, 69, 0.4);
+      color: #ff8b94;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .quick-login-section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #2A2A2A;
+    }
+    .quick-login-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888888;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .quick-login-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .quick-btn {
+      background-color: #242424;
+      border: 1px solid #333333;
+      color: #CCCCCC;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .quick-btn strong {
+      color: #FFFFFF;
+      font-size: 0.75rem;
+    }
+    .quick-btn span {
+      font-size: 0.65rem;
+      color: var(--color-gold);
+    }
+    .quick-btn:hover {
+      border-color: var(--color-gold);
+      background-color: #2A2A2A;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Minimal Nav -->
+  <header style="padding: 1.5rem 2rem; border-bottom: 1px solid #222222; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/" class="brand-logo brand-logo--white">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </a>
+    <a href="/" style="color: #999999; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#B8975A'" onmouseout="this.style.color='#999999'">
+      &larr; Back to Public Website
+    </a>
+  </header>
+
+  <!-- Login Area -->
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="login-brand">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">PRIVATE CLIENT CRM</span>
+        <h2 style="font-family: var(--font-serif); font-size: 1.7rem; color: #FFFFFF; margin-top: 1.2rem; font-weight: 400;">
+          Staff & Advisor Portal
+        </h2>
+        <p style="font-size: 0.8rem; color: #888888; margin-top: 0.3rem;">
+          Enter your authorized credentials to access leads, viewings, and pipeline data.
+        </p>
+      </div>
+
+      <!-- Error Alert -->
+      <div class="login-error-box" id="loginErrorBox"></div>
+
+      <!-- Login Form -->
+      <form id="adminLoginForm">
+        <div class="login-form-group">
+          <label class="login-label" for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="login-input" placeholder="advisor@hadirealestate.ae" required autocomplete="email">
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="login-input" placeholder="••••••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="login-btn" id="loginSubmitBtn">
+          Sign In to Admin Console
+        </button>
+      </form>
+
+      <!-- Quick Fill Helper for Demo / Testing -->
+      <div class="quick-login-section">
+        <div class="quick-login-title">Quick Demo Sign-In (Click to Test)</div>
+        <div class="quick-login-grid">
+          <button type="button" class="quick-btn" onclick="quickFill('admin@hadirealestate.ae', 'Hadi2026!')">
+            <strong>Hadi</strong>
+            <span>Managing Director (Admin)</span>
+          </button>
+          <button type="button" class="quick-btn" onclick="quickFill('rashid@hadirealestate.ae', 'Rashid2026!')">
+            <strong>Rashid</strong>
+            <span>Senior Broker (Agent)</span>
+          </button>
+          <button type="button" class="quick-btn" onclick="quickFill('elena@hadirealestate.ae', 'Elena2026!')">
+            <strong>Elena</strong>
+            <span>Off-Plan Lead (Agent)</span>
+          </button>
+          <button type="button" class="quick-btn" onclick="quickFill('tariq@hadirealestate.ae', 'Tariq2026!')">
+            <strong>Tariq</strong>
+            <span>Advisory Broker (Agent)</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer Notice -->
+  <footer style="padding: 1.5rem; text-align: center; border-top: 1px solid #1A1A1A; font-size: 0.72rem; color: #666666;">
+    Hadi Real Estate • Private Client Network • Strictly Confidential & Authorized Access Only
+  </footer>
+
+  <script>
+    // Check if user is already logged in
+    const existingUser = localStorage.getItem('hre_auth_user');
+    const existingToken = localStorage.getItem('hre_auth_token');
+    if (existingUser && existingToken) {
+      // Optional: automatically redirect to admin console
+      // window.location.href = '/admin.html';
+    }
+
+    function quickFill(email, password) {
+      document.getElementById('loginEmail').value = email;
+      document.getElementById('loginPassword').value = password;
+      document.getElementById('loginErrorBox').style.display = 'none';
+      // Auto-submit for convenience
+      document.getElementById('adminLoginForm').dispatchEvent(new Event('submit'));
+    }
+
+    const loginForm = document.getElementById('adminLoginForm');
+    const errorBox = document.getElementById('loginErrorBox');
+    const submitBtn = document.getElementById('loginSubmitBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Authenticating...';
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Save credentials in local storage
+          localStorage.setItem('hre_auth_token', data.token);
+          localStorage.setItem('hre_auth_user', JSON.stringify(data.user));
+
+          submitBtn.textContent = 'Access Granted. Redirecting...';
+          submitBtn.style.backgroundColor = '#25D366';
+          submitBtn.style.borderColor = '#25D366';
+          submitBtn.style.color = '#FFFFFF';
+
+          setTimeout(() => {
+            window.location.href = '/admin.html';
+          }, 400);
+        } else {
+          errorBox.textContent = data.error || 'Invalid credentials. Please verify your email and password.';
+          errorBox.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In to Admin Console';
+        }
+      } catch (err) {
+        errorBox.textContent = 'Server connection error. Please ensure the backend is running.';
+        errorBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In to Admin Console';
+      }
+    });
+  </script>
+</body>
+</html>

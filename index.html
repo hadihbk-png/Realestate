@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hadi Real Estate | Exclusive Luxury Homes & Off-Plan Investments UAE</title>
+  <meta name="description" content="Discover extraordinary ready homes, architectural beachfront villas, sky penthouses, and premier off-plan investments across UAE. Tailored private advisory in AED.">
+
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP MENU (Transparent over Hero -> White with Charcoal Logo on Scroll)
+       ========================================================================== -->
+  <header class="top-nav" id="topNav">
+    <div class="container nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="brand-logo brand-logo--white" id="navBrandLogo" aria-label="Hadi Real Estate Home">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">REAL ESTATE</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li><a href="/" class="nav-link active">Home</a></li>
+          <li><a href="/properties.html" class="nav-link">Properties</a></li>
+          <li><a href="/offplan.html" class="nav-link">Off-Plan</a></li>
+          <li><a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a></li>
+          <li><a href="/sell.html" class="nav-link">Sell</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Button & Mobile Toggle -->
+      <div class="nav-actions">
+        <button class="btn btn-outline-white btn-nav-register trigger-register-modal" id="navRegisterBtn">
+          Register Interest
+        </button>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Full-Screen Mobile Menu Overlay -->
+  <div class="fullscreen-mobile-menu" id="fullscreenMobileMenu">
+    <div class="brand-logo brand-logo--charcoal" style="margin-bottom: 2rem;">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </div>
+
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/properties.html" class="mobile-nav-link">Properties</a></li>
+      <li><a href="/offplan.html" class="mobile-nav-link">Off-Plan Projects</a></li>
+      <li><a href="/mortgage-calculator.html" class="mobile-nav-link">Mortgage Calculator</a></li>
+      <li><a href="/sell.html" class="mobile-nav-link">Sell Your Property</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+
+    <div class="mobile-menu-footer">
+      <button class="btn btn-gold trigger-register-modal mobile-btn" style="width: 240px;">
+        Register Interest
+      </button>
+      <p style="font-size: 0.72rem; color: var(--color-warmgray); margin-top: 1.5rem; letter-spacing: 0.15em;">
+        PRICES IN AED • DUBAI & ABU DHABI
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       HOME PAGE HERO & INTEGRATED SEARCH BAR
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-background-wrapper">
+      <img src="assets/images/hero-skyline.jpg" alt="Dubai Luxury Skyline at Twilight" class="hero-bg-img">
+      <div class="hero-dark-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-tag">PRIVATE PROPERTY PORTFOLIO</span>
+      <h1 class="hero-title">Live Where Luxury Meets the Skyline</h1>
+      <p class="hero-description">
+        Exclusive homes and off-plan investments across UAE's most sought-after communities
+      </p>
+
+      <div class="hero-buttons">
+        <a href="/properties.html" class="btn btn-white">Explore Properties</a>
+        <button class="btn btn-outline-white trigger-register-modal">Register Interest</button>
+      </div>
+
+      <!-- Integrated Luxury Search Bar -->
+      <div class="hero-search-box">
+        <form id="heroSearchForm" style="display: contents;">
+          
+          <div class="search-field-group">
+            <label class="search-field-label">Community</label>
+            <select name="community" class="search-field-select">
+              <option value="all">All Prime Communities</option>
+              <option value="Palm Jumeirah">Palm Jumeirah</option>
+              <option value="Downtown">Downtown Dubai</option>
+              <option value="Dubai Marina">Dubai Marina</option>
+              <option value="Dubai Hills">Dubai Hills Estate</option>
+              <option value="Business Bay">Business Bay</option>
+              <option value="JVC">JVC (Jumeirah Village Circle)</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Property Type</label>
+            <select name="property_type" class="search-field-select">
+              <option value="all">All Types</option>
+              <option value="Villa">Villas & Mansions</option>
+              <option value="Penthouse">Sky Penthouses</option>
+              <option value="Apartment">Apartments & Suites</option>
+              <option value="Duplex">Duplexes</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Bedrooms</label>
+            <select name="bedrooms" class="search-field-select">
+              <option value="all">Any Beds</option>
+              <option value="2">2 Bedrooms</option>
+              <option value="3">3 Bedrooms</option>
+              <option value="4">4 Bedrooms</option>
+              <option value="5">5+ Bedrooms</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Max Budget (AED)</label>
+            <select name="max_price" class="search-field-select">
+              <option value="all">No Limit</option>
+              <option value="5000000">Up to AED 5,000,000</option>
+              <option value="15000000">Up to AED 15,000,000</option>
+              <option value="35000000">Up to AED 35,000,000</option>
+              <option value="70000000">Up to AED 70,000,000</option>
+            </select>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-gold" style="width: 100%; padding: 0.95rem 1.8rem;">
+              Search
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       FEATURED PROPERTIES SECTION
+       ========================================================================== -->
+  <section class="section-padding" id="properties">
+    <div class="container">
+      
+      <div class="section-header center">
+        <span class="section-tag center">CURATED PORTFOLIO</span>
+        <h2 class="section-title">Featured Ready Residences</h2>
+        <p class="section-subtitle center">
+          Handpicked architectural masterworks ready for immediate private occupancy across Dubai and Abu Dhabi.
+        </p>
+      </div>
+
+      <!-- Properties Grid (Loaded dynamically from API) -->
+      <div class="properties-grid" id="featuredPropertiesGrid">
+        <!-- Rendered by home.js -->
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="/properties.html" class="btn btn-outline-charcoal">
+          View All 15 Ready Properties
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       FEATURED OFF-PLAN DEVELOPMENTS SECTION
+       ========================================================================== -->
+  <section class="section-padding bg-offwhite" id="offplan">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">OFF-PLAN PROJECTS</span>
+        <h2 class="section-title">Visionary Future Developments</h2>
+        <p class="section-subtitle">
+          Secure early-stage private allocations with flexible construction-linked payment plans and high projected net yields.
+        </p>
+      </div>
+
+      <!-- Offplan Grid (Loaded dynamically from API) -->
+      <div class="offplan-card-grid" id="featuredOffPlanGrid">
+        <!-- Rendered by home.js -->
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="/offplan.html" class="btn btn-gold">
+          Explore All Off-Plan Projects
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       WHY INVEST IN DUBAI SECTION
+       ========================================================================== -->
+  <section class="section-padding">
+    <div class="container">
+      
+      <div class="section-header center">
+        <span class="section-tag center">INVESTMENT ADVANTAGE</span>
+        <h2 class="section-title">Why Invest in Dubai</h2>
+        <p class="section-subtitle center">
+          The world’s most dynamic wealth haven combining political stability, progressive legislation, and superior capital appreciation.
+        </p>
+      </div>
+
+      <div class="invest-grid">
+        
+        <div class="invest-card">
+          <div class="invest-card-number">0%</div>
+          <h3 class="invest-card-title">Tax-Free Returns</h3>
+          <p class="invest-card-desc">
+            Enjoy 0% tax on residential property purchases, personal income, and capital gains, maximizing your net wealth generation.
+          </p>
+        </div>
+
+        <div class="invest-card">
+          <div class="invest-card-number">6-9%</div>
+          <h3 class="invest-card-title">High Rental Income</h3>
+          <p class="invest-card-desc">
+            Consistently outperforming London, New York, and Singapore with average net yields between 6% and 9.5% across prime corridors.
+          </p>
+        </div>
+
+        <div class="invest-card">
+          <div class="invest-card-number">10 Yr</div>
+          <h3 class="invest-card-title">UAE Golden Visa</h3>
+          <p class="invest-card-desc">
+            Real estate investments of AED 2,000,000 or more grant eligibility for the renewable 10-year Golden Residency for you and your family.
+          </p>
+        </div>
+
+        <div class="invest-card">
+          <div class="invest-card-number">#1</div>
+          <h3 class="invest-card-title">Safety & Infrastructure</h3>
+          <p class="invest-card-desc">
+            Ranked among the safest cities globally with world-leading healthcare, international schools, and premier global air connectivity.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       POPULAR COMMUNITIES SECTION
+       ========================================================================== -->
+  <section class="section-padding bg-offwhite">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">PRESTIGIOUS DESTINATIONS</span>
+        <h2 class="section-title">Popular Communities</h2>
+        <p class="section-subtitle">
+          Explore iconic waterfront enclaves, vibrant downtown towers, and serene golf course master developments.
+        </p>
+      </div>
+
+      <div class="communities-grid">
+        
+        <a href="/properties.html?community=Palm+Jumeirah" class="community-item">
+          <img src="assets/images/palm-villa.jpg" alt="Palm Jumeirah Dubai" class="community-img">
+          <div class="community-overlay">
+            <span class="community-tag">WATERFRONT ICON</span>
+            <h3 class="community-name">Palm Jumeirah</h3>
+            <div class="community-stats">Private Fronds & Mansions</div>
+          </div>
+        </a>
+
+        <a href="/properties.html?community=Downtown" class="community-item">
+          <img src="assets/images/downtown-penthouse.jpg" alt="Downtown Dubai" class="community-img">
+          <div class="community-overlay">
+            <span class="community-tag">CULTURAL CORE</span>
+            <h3 class="community-name">Downtown Dubai</h3>
+            <div class="community-stats">Burj Khalifa & Opera District</div>
+          </div>
+        </a>
+
+        <a href="/properties.html?community=Dubai+Hills" class="community-item">
+          <img src="assets/images/hills-mansion.jpg" alt="Dubai Hills Estate" class="community-img">
+          <div class="community-overlay">
+            <span class="community-tag">GOLF SANCTUARY</span>
+            <h3 class="community-name">Dubai Hills</h3>
+            <div class="community-stats">Championship Fairways & Mansions</div>
+          </div>
+        </a>
+
+        <a href="/properties.html?community=Dubai+Marina" class="community-item">
+          <img src="assets/images/waterfront-residence.jpg" alt="Dubai Marina" class="community-img">
+          <div class="community-overlay">
+            <span class="community-tag">YACHT HAVEN</span>
+            <h3 class="community-name">Dubai Marina</h3>
+            <div class="community-stats">Promenade Living & High Yields</div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       REGISTER INTEREST FORM SECTION (NO EMAIL SENDING)
+       ========================================================================== -->
+  <section class="section-padding" id="contact">
+    <div class="container" style="max-width: 960px;">
+      
+      <div class="section-header center">
+        <span class="section-tag center">PRIVATE CLIENT CONCIERGE</span>
+        <h2 class="section-title">Register Your Interest</h2>
+        <p class="section-subtitle center">
+          Connect directly with a licensed senior broker. Receive tailored off-market opportunities and priority previews.
+        </p>
+      </div>
+
+      <div class="register-section-card form-card-container">
+        
+        <form data-ajax-endpoint="/api/leads" id="homeRegisterForm">
+          <!-- Anti-Spam Honeypot Field -->
+          <input type="text" name="hp_website_fax" class="hp-fax-field" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="source" value="Home Page - VIP Register Interest">
+
+          <div class="form-grid">
+            
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="full_name" class="form-input" placeholder="e.g. Lord Alexander Vance" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contact Phone / WhatsApp *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="+971 50 000 0000" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address (Optional)</label>
+              <input type="email" name="email" class="form-input" placeholder="client@domain.com">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Investment Budget (AED)</label>
+              <select name="budget_aed" class="form-select">
+                <option value="AED 2M - 5M">AED 2,000,000 – AED 5,000,000</option>
+                <option value="AED 5M - 15M">AED 5,000,000 – AED 15,000,000</option>
+                <option value="AED 15M - 35M" selected>AED 15,000,000 – AED 35,000,000</option>
+                <option value="AED 35M - 75M">AED 35,000,000 – AED 75,000,000</option>
+                <option value="AED 75M+">AED 75,000,000+ (Trophy Assets)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Preferred Location</label>
+              <select name="preferred_community" class="form-select">
+                <option value="Palm Jumeirah">Palm Jumeirah</option>
+                <option value="Downtown Dubai">Downtown Dubai</option>
+                <option value="Dubai Hills">Dubai Hills Estate</option>
+                <option value="Dubai Marina">Dubai Marina</option>
+                <option value="Business Bay">Business Bay</option>
+                <option value="JVC">JVC</option>
+                <option value="Flexible Across UAE">Flexible Across UAE</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Property Preference</label>
+              <select name="property_type" class="form-select">
+                <option value="Any Prime Opportunity">Any Prime Opportunity</option>
+                <option value="Beachfront Villa">Beachfront Villa / Mansion</option>
+                <option value="Sky Penthouse">Sky Penthouse</option>
+                <option value="Off-Plan Tower">Visionary Off-Plan Tower</option>
+              </select>
+            </div>
+
+            <div class="form-group form-full-width">
+              <label class="form-label">Bespoke Requirements / Notes</label>
+              <textarea name="notes" class="form-textarea" placeholder="Specify your desired view, completion timeline, or private viewing preferences..."></textarea>
+            </div>
+
+            <div class="form-full-width" style="text-align: center; margin-top: 1rem;">
+              <button type="submit" class="btn btn-gold" style="min-width: 280px;">
+                Submit VIP Registration
+              </button>
+              <p style="font-size: 0.7rem; color: var(--color-warmgray); margin-top: 0.85rem; letter-spacing: 0.1em;">
+                ALL INQUIRIES STRICTLY CONFIDENTIAL. NO SPAM.
+              </p>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- Simulated Luxury Thank-You Card -->
+        <div class="form-success-box">
+          <div class="success-reference">CONFIDENTIAL REFERENCE: <span class="ref-number">HRE-94812</span></div>
+          <h3 class="success-heading">Your Private Portfolio Request Is Confirmed</h3>
+          <p style="color: var(--color-warmgray); max-width: 600px; margin: 0 auto 2rem auto; font-size: 0.95rem; line-height: 1.8;">
+            Thank you. Hadi Real Estate advisor will contact you within 24 hours.
+          </p>
+          <button class="btn btn-outline-charcoal" onclick="location.reload()">New Registration</button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SIMPLE DARK FOOTER WITH THE LOGO
+       ========================================================================== -->
+  <footer class="footer-dark">
+    <div class="container">
+      
+      <div class="footer-top-grid">
+        
+        <div class="footer-brand-col">
+          <div class="brand-logo brand-logo--white">
+            <span class="logo-word">HADI</span>
+            <span class="logo-line"></span>
+            <span class="logo-subtext">REAL ESTATE</span>
+          </div>
+          <p class="footer-brand-desc">
+            Bespoke luxury brokerage and investment advisory for prime residential and off-plan assets in the United Arab Emirates.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">PORTFOLIO</div>
+          <ul class="footer-links-list">
+            <li><a href="/properties.html" class="footer-link">Ready Residences</a></li>
+            <li><a href="/offplan.html" class="footer-link">Off-Plan Projects</a></li>
+            <li><a href="/properties.html?community=Palm+Jumeirah" class="footer-link">Palm Jumeirah</a></li>
+            <li><a href="/properties.html?community=Downtown" class="footer-link">Downtown Dubai</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">ADVISORY</div>
+          <ul class="footer-links-list">
+            <li><a href="/mortgage-calculator.html" class="footer-link">Mortgage Calculator</a></li>
+            <li><a href="/sell.html" class="footer-link">Sell Your Property</a></li>
+            <li><a href="/about.html" class="footer-link">About Hadi</a></li>
+            <li><a href="/contact.html" class="footer-link">Contact Office</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">PRIVATE OFFICE</div>
+          <p class="footer-contact-item">
+            Level 48, Boulevard Plaza Tower<br>
+            Downtown Dubai, UAE
+          </p>
+          <p class="footer-contact-item">
+            Inquiries: +971 4 800 HADI<br>
+            WhatsApp: +971 50 123 4567
+          </p>
+          <p class="footer-contact-item" style="color: var(--color-gold); font-size: 0.75rem; letter-spacing: 0.15em;">
+            PRICES IN AED • ZERO HIDDEN FEES
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="footer-legal-note">
+          © 2026 Hadi Real Estate. All rights reserved. Licensed real estate brokerage in the United Arab Emirates. All property prices listed in UAE Dirhams (AED). Fictional developer names are used for illustrative purposes.
+        </p>
+        <div>
+          <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold);">
+            DISCRETION • INTEGRITY • EXCELLENCE
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Universal Scripts -->
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

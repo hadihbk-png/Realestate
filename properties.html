@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties Portfolio | Hadi Real Estate UAE</title>
+  <meta name="description" content="Explore luxury ready apartments, penthouses, and signature villas across Dubai Marina, Downtown, Palm Jumeirah, Business Bay, Dubai Hills, and JVC. Prices in AED.">
+
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Menu (Solid state on subpages) -->
+  <header class="top-nav solid-nav" id="topNav">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo brand-logo--charcoal" id="navBrandLogo" aria-label="Hadi Real Estate Home">
+        <span class="logo-word">HADI</span>
+        <span class="logo-line"></span>
+        <span class="logo-subtext">REAL ESTATE</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/properties.html" class="nav-link active">Properties</a></li>
+          <li><a href="/offplan.html" class="nav-link">Off-Plan</a></li>
+          <li><a href="/mortgage-calculator.html" class="nav-link">Mortgage Calculator</a></li>
+          <li><a href="/sell.html" class="nav-link">Sell</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline-charcoal btn-nav-register trigger-register-modal">
+          Register Interest
+        </button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="fullscreen-mobile-menu" id="fullscreenMobileMenu">
+    <div class="brand-logo brand-logo--charcoal" style="margin-bottom: 2rem;">
+      <span class="logo-word">HADI</span>
+      <span class="logo-line"></span>
+      <span class="logo-subtext">REAL ESTATE</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/properties.html" class="mobile-nav-link">Properties</a></li>
+      <li><a href="/offplan.html" class="mobile-nav-link">Off-Plan Projects</a></li>
+      <li><a href="/mortgage-calculator.html" class="mobile-nav-link">Mortgage Calculator</a></li>
+      <li><a href="/sell.html" class="mobile-nav-link">Sell Your Property</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-gold trigger-register-modal mobile-btn" style="width: 240px;">Register Interest</button>
+    </div>
+  </div>
+
+  <!-- Page Header Banner -->
+  <section class="page-header-banner">
+    <div class="container">
+      <span class="section-tag" style="color: var(--color-gold);">EXCLUSIVE PORTFOLIO</span>
+      <h1 class="section-title">Ready Residences in the UAE</h1>
+      <p class="section-subtitle center">
+        Curated luxury apartments, sky penthouses, and private beachfront estates across Dubai's most prestigious enclaves. Prices in AED.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Controls Section -->
+  <section style="background-color: var(--color-offwhite); padding: 2.5rem 0; border-bottom: 1px solid var(--color-lightgray);">
+    <div class="container">
+      <div style="background-color: var(--color-white); padding: 1.5rem 2rem; border: 1px solid var(--color-lightgray); box-shadow: var(--shadow-soft);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) auto; gap: 1.2rem; align-items: end;">
+          
+          <div class="search-field-group">
+            <label class="search-field-label">Search Keyword</label>
+            <input type="text" id="propSearchInput" class="search-field-input" placeholder="e.g. Marina, Penthouse, Palm">
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Community</label>
+            <select id="propCommunitySelect" class="search-field-select">
+              <option value="all">All Communities</option>
+              <option value="Dubai Marina">Dubai Marina</option>
+              <option value="Downtown">Downtown Dubai</option>
+              <option value="Palm Jumeirah">Palm Jumeirah</option>
+              <option value="Business Bay">Business Bay</option>
+              <option value="Dubai Hills">Dubai Hills Estate</option>
+              <option value="JVC">JVC</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Property Type</label>
+            <select id="propTypeSelect" class="search-field-select">
+              <option value="all">All Types</option>
+              <option value="Villa">Villas & Mansions</option>
+              <option value="Penthouse">Sky Penthouses</option>
+              <option value="Apartment">Apartments</option>
+              <option value="Duplex">Duplexes</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Bedrooms</label>
+            <select id="propBedsSelect" class="search-field-select">
+              <option value="all">Any Bedrooms</option>
+              <option value="2">2 Bedrooms</option>
+              <option value="3">3 Bedrooms</option>
+              <option value="4">4 Bedrooms</option>
+              <option value="5">5+ Bedrooms</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Max Price (AED)</label>
+            <select id="propPriceSelect" class="search-field-select">
+              <option value="all">No Price Cap</option>
+              <option value="5000000">Up to AED 5,000,000</option>
+              <option value="15000000">Up to AED 15,000,000</option>
+              <option value="30000000">Up to AED 30,000,000</option>
+              <option value="50000000">Up to AED 50,000,000</option>
+              <option value="75000000">Up to AED 75,000,000</option>
+            </select>
+          </div>
+
+          <div class="search-field-group">
+            <label class="search-field-label">Sort By</label>
+            <select id="propSortSelect" class="search-field-select">
+              <option value="price-desc">Price: High to Low</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="beds-desc">Bedrooms: Most First</option>
+            </select>
+          </div>
+
+          <div>
+            <button id="propResetBtn" class="btn btn-outline-charcoal" style="padding: 0.65rem 1.2rem; font-size: 0.65rem;">
+              Reset
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Grid Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.5rem;">
+        <span id="propertiesCount" style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-warmgray); font-weight: 500;">
+          Loading properties...
+        </span>
+        <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-gold);">
+          ALL PRICES IN AED
+        </span>
+      </div>
+
+      <div class="properties-grid" id="propertiesGrid">
+        <!-- Rendered by properties.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Footer with Logo -->
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo brand-logo--white">
+            <span class="logo-word">HADI</span>
+            <span class="logo-line"></span>
+            <span class="logo-subtext">REAL ESTATE</span>
+          </div>
+          <p class="footer-brand-desc">
+            Bespoke luxury brokerage and investment advisory for prime residential and off-plan assets in the United Arab Emirates.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">PORTFOLIO</div>
+          <ul class="footer-links-list">
+            <li><a href="/properties.html" class="footer-link">Ready Residences</a></li>
+            <li><a href="/offplan.html" class="footer-link">Off-Plan Projects</a></li>
+            <li><a href="/properties.html?community=Palm+Jumeirah" class="footer-link">Palm Jumeirah</a></li>
+            <li><a href="/properties.html?community=Downtown" class="footer-link">Downtown Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ADVISORY</div>
+          <ul class="footer-links-list">
+            <li><a href="/mortgage-calculator.html" class="footer-link">Mortgage Calculator</a></li>
+            <li><a href="/sell.html" class="footer-link">Sell Your Property</a></li>
+            <li><a href="/about.html" class="footer-link">About Hadi</a></li>
+            <li><a href="/contact.html" class="footer-link">Contact Office</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">PRIVATE OFFICE</div>
+          <p class="footer-contact-item">Level 48, Boulevard Plaza Tower<br>Downtown Dubai, UAE</p>
+          <p class="footer-contact-item">Inquiries: +971 4 800 HADI<br>WhatsApp: +971 50 123 4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <p class="footer-legal-note">
+          © 2026 Hadi Real Estate. All rights reserved. Licensed real estate brokerage in the United Arab Emirates. Prices in AED.
+        </p>
+        <span style="font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold);">
+          DISCRETION • INTEGRITY • EXCELLENCE
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/properties.js"></script>
+</body>
+</html>
