@@ -129,21 +129,224 @@ function initUniversalModals() {
     }
   });
 
-  document.querySelectorAll('.trigger-register-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Delegated click listener for all register interest triggers
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.trigger-register-modal');
+    if (trigger) {
       e.preventDefault();
       openVipModal();
-    });
+    }
   });
 }
 
 function openVipModal(presetProperty = '') {
   let modal = document.getElementById('vipModal');
-  if (!modal) return;
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'vipModal';
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal-container" style="max-width: 680px;">
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+        <div class="form-card-container">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <span class="section-tag center">PRIVATE CLIENT ACCESS</span>
+            <h3 style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: var(--font-serif);">Register Your Interest</h3>
+            <p style="font-size: 0.88rem; color: var(--color-warmgray); max-width: 480px; margin: 0 auto; line-height: 1.6;">
+              Secure private allocations, confidential off-market portfolios, and bespoke advisory across Dubai & Abu Dhabi.
+            </p>
+          </div>
 
-  const propInput = document.getElementById('vipPropertySelect');
-  if (propInput && presetProperty) {
-    propInput.value = presetProperty;
+          <form id="universalVipRegisterForm">
+            <!-- Anti-spam honeypot -->
+            <input type="text" name="hp_website_fax" class="hp-fax-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="source" value="Website Navigation (Register Interest)">
+            <input type="hidden" name="property_id" value="">
+            <input type="hidden" name="property_title" value="">
+
+            <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" name="full_name" class="form-input" placeholder="e.g. Sheikh Mohammed / Alexander Vance" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Phone / WhatsApp Number *</label>
+                  <input type="tel" name="phone" class="form-input" placeholder="+971 50 123 4567" required>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Email Address (Optional)</label>
+                  <input type="email" name="email" class="form-input" placeholder="name@domain.com">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Preferred Community</label>
+                  <select name="preferred_community" id="vipCommunitySelect" class="form-select">
+                    <option value="All Prime Communities">All Prime Communities</option>
+                    <option value="Downtown">Downtown Dubai</option>
+                    <option value="Palm Jumeirah">Palm Jumeirah</option>
+                    <option value="Dubai Hills">Dubai Hills Estate</option>
+                    <option value="Dubai Marina">Dubai Marina</option>
+                    <option value="Business Bay">Business Bay</option>
+                    <option value="JVC">Jumeirah Village Circle (JVC)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Property Type</label>
+                  <select name="property_type" class="form-select">
+                    <option value="Any Luxury Property">Any Luxury Property</option>
+                    <option value="Penthouse">Sky Penthouse / Duplex</option>
+                    <option value="Villa">Signature Beachfront / Golf Villa</option>
+                    <option value="Apartment">Waterfront Residence</option>
+                    <option value="Off-Plan">Off-Plan Tower Allocation</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Investment Budget (AED)</label>
+                  <select name="budget_aed" class="form-select">
+                    <option value="AED 5M - 15M">AED 5,000,000 – 15,000,000</option>
+                    <option value="AED 15M - 35M">AED 15,000,000 – 35,000,000</option>
+                    <option value="AED 35M - 60M">AED 35,000,000 – 60,000,000</option>
+                    <option value="AED 60M+ Trophy Asset">AED 60,000,000+ (Trophy Asset / Ultra-Prime)</option>
+                    <option value="Cash Buyer Full Asking Price">Cash Buyer (Full Asking Price)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Payment Method</label>
+                  <select name="payment_method" class="form-select">
+                    <option value="Cash / Own Funds">Cash / Private Capital Funds</option>
+                    <option value="Mortgage / UAE Bank Finance">Mortgage / UAE Bank Finance</option>
+                    <option value="Developer Payment Plan">Developer Milestone Payment Plan</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Purchasing Timeline</label>
+                  <select name="timeline" class="form-select">
+                    <option value="Immediate (This Month)">Immediate (Ready to Transact This Month)</option>
+                    <option value="Within 30 - 60 Days">Within 30 – 60 Days</option>
+                    <option value="Within 6 Months">Within 6 Months</option>
+                    <option value="Exploring Portfolio Opportunities">Exploring Portfolio Opportunities</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Specific Property / Bespoke Requirements (Optional)</label>
+                <textarea name="notes" id="vipNotesField" class="form-textarea" placeholder="e.g. Private infinity pool, high floor panoramic sea view, or specific developer interest" style="min-height: 80px;"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-gold" id="vipSubmitBtn" style="width: 100%; margin-top: 0.5rem; padding: 1.1rem;">
+                Register Interest & Request Allocation
+              </button>
+
+              <p style="font-size: 0.72rem; color: var(--color-warmgray); text-align: center; margin-top: 0.2rem; letter-spacing: 0.05em;">
+                Strictly confidential. A partner-level advisor will contact you directly within 24 hours.
+              </p>
+            </div>
+          </form>
+
+          <!-- Success State -->
+          <div class="form-success-box" id="vipSuccessBox">
+            <div class="success-reference">CONFIDENTIAL REGISTRATION: <span class="ref-number">HRE-VIP-9021</span></div>
+            <h3 class="success-heading" style="font-size: 1.8rem; font-family: var(--font-serif); margin-top: 0.5rem;">Registration Confirmed</h3>
+            <p style="color: var(--color-warmgray); font-size: 0.95rem; line-height: 1.8; margin-bottom: 2rem;" class="form-thankyou-text">
+              ${UNIVERSAL_THANK_YOU_MESSAGE}
+            </p>
+            <button class="btn btn-outline-charcoal modal-backdrop-close" style="padding: 0.8rem 2rem;">Close Window</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Close handlers
+    modal.querySelector('.modal-close-btn').addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    modal.querySelector('.modal-backdrop-close').addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Form submission
+    const form = modal.querySelector('#universalVipRegisterForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = modal.querySelector('#vipSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing Registration...';
+
+      const payload = {
+        hp_website_fax: form.querySelector('[name="hp_website_fax"]').value,
+        full_name: form.querySelector('[name="full_name"]').value.trim(),
+        phone: form.querySelector('[name="phone"]').value.trim(),
+        email: form.querySelector('[name="email"]').value.trim(),
+        preferred_community: form.querySelector('[name="preferred_community"]').value,
+        property_type: form.querySelector('[name="property_type"]').value,
+        budget_aed: form.querySelector('[name="budget_aed"]').value,
+        payment_method: form.querySelector('[name="payment_method"]').value,
+        timeline: form.querySelector('[name="timeline"]').value,
+        notes: form.querySelector('[name="notes"]').value.trim(),
+        source: form.querySelector('[name="source"]').value || 'Website Navigation (Register Interest)',
+        property_id: form.querySelector('[name="property_id"]').value || null,
+        property_title: form.querySelector('[name="property_title"]').value || null
+      };
+
+      try {
+        const res = await fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          form.style.display = 'none';
+          const successBox = modal.querySelector('#vipSuccessBox');
+          if (successBox) {
+            successBox.querySelector('.ref-number').textContent = data.referenceCode || 'HRE-VIP-9021';
+            const tyElem = successBox.querySelector('.form-thankyou-text');
+            if (tyElem) tyElem.textContent = UNIVERSAL_THANK_YOU_MESSAGE;
+            successBox.classList.add('visible');
+          }
+          showToast(UNIVERSAL_THANK_YOU_MESSAGE);
+        } else {
+          showToast(data.error || 'Submission error. Please check your phone number.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Register Interest & Request Allocation';
+        }
+      } catch (err) {
+        showToast('Connection error. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register Interest & Request Allocation';
+      }
+    });
+  }
+
+  // Pre-fill if requested
+  const notesField = modal.querySelector('#vipNotesField');
+  if (presetProperty && notesField && !notesField.value) {
+    notesField.value = `Interested in: ${typeof presetProperty === 'object' ? presetProperty.name || presetProperty.title : presetProperty}`;
   }
 
   modal.classList.add('active');
